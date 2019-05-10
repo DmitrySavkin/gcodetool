@@ -88,9 +88,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GCodeGenerator\GCodeGenerator.csproj">
-      <Project>{926b20d1-5fcf-4ce1-bd15-f148880d486a}</Project>
-      <Name>GCodeGenerator</Name>
+    <ProjectReference Include="..\InterfaceLib\InterfaceLib.csproj">
+      <Project>{a64802b5-712d-42d1-a383-12d3ffbb2a7a}</Project>
+      <Name>InterfaceLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

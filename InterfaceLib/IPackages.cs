@@ -6,7 +6,7 @@ namespace InterfaceLib
 {
     interface IPackages
     {
-        
+        Package GetPackage(); 
     }
 
 

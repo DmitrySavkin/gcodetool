@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace InterfaceLib
 {
-    interface ISortetPackages
+    struct Package
     {
-
-        List<Package> SortPackage(List<Package> packages);
+        IList geometrieList;
     }
 }
