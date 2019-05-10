@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCodeGenerator", "GCodeGene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCodeGeneratorTests", "GCodeGeneratorTests\GCodeGeneratorTests.csproj", "{E1DC2354-8BFC-4546-9285-AE5AE56D585A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCADTool", "AutoCADTool\AutoCADTool.csproj", "{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCAD_GUI", "AutoCADTool\AutoCAD_GUI.csproj", "{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

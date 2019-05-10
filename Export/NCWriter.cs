@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Export
 {
-   public class NCWriter
+   public class SaveG_Code
     {
 
         public static bool Export(GCode gcode, string path)
