@@ -17,7 +17,7 @@ namespace GCodeGenerator.Tests
             StringBuilder s = new StringBuilder();
             s.Append("G0 X0 Y0 Z0");
             s.Append(Environment.NewLine);
-            s.Append("G01 X0 Y0 Z0");
+            s.Append("G01 X0 Y1 Z1");
             s.Append(Environment.NewLine);
             Assert.AreEqual(s.ToString(), GCodeGenerator.GetGCode().ToString());
         }

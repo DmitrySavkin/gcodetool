@@ -7,8 +7,8 @@
     <ProjectGuid>{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ACAD_GUI</RootNamespace>
-    <AssemblyName>ACAD_GUI</AssemblyName>
+    <RootNamespace>AutoCADTool</RootNamespace>
+    <AssemblyName>AutoCADTool</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

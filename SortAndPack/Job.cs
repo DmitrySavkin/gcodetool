@@ -38,7 +38,6 @@ namespace SortAndPack
             return curve2Ds[i].EndPoint.Y;
         }
 
-        public void Methode() 
-        {}
+     
     }
 }

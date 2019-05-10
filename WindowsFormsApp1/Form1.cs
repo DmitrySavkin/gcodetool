@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace ConverterGUI
 {
     public partial class Form1 : Form
     {
@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
         {
             MessageBox.Show("The draw was converted");
             infoTextBox.TextAlign = HorizontalAlignment.Left;
-            infoTextBox.Text = GCodeGenerator.GCodeGenerator.GetGCode().ToString();
+
         }
 
         private void ToolStripButton3_Click(object sender, EventArgs e)

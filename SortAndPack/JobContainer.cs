@@ -29,6 +29,7 @@ namespace SortAndPack
             {
                 throw new MemberAccessException("No Jobs currently");
             }
+        
             return Jobs[Jobs.Count - 1];
         }
 

@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace ConverterGUI
 {
     partial class Form1
     {

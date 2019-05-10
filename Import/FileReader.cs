@@ -9,10 +9,10 @@ namespace Import
    public class FileReader
     {
         //?????Input parameter/////
-        public static List<PolylineCurve2d> Read()
+        public static string Read()
         {
            
-            return null;
+            return "bla";
         }
     }
 }

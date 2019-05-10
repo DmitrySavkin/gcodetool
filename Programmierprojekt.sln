@@ -5,14 +5,12 @@ VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmierprojekt", "Programmierprojekt\Programmierprojekt.csproj", "{D497A24A-3C9B-49E7-B172-E991A2967B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{D366F1BD-123F-40C6-B0E8-9585364F6DD2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConverterGUI", "WindowsFormsApp1\ConverterGUI.csproj", "{D366F1BD-123F-40C6-B0E8-9585364F6DD2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{926B20D1-5FCF-4CE1-BD15-F148880D486A} = {926B20D1-5FCF-4CE1-BD15-F148880D486A}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Export", "Export\Export.csproj", "{A3CFF06B-E14A-426B-9A73-A510A2993BB2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAndPack", "SortAndPack\SortAndPack.csproj", "{FA4ADADB-54D3-4CB6-BAB9-0D613B1ADB01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackClosedShapes", "PackClosedShapes\PackClosedShapes.csproj", "{27AF0F97-1403-438E-9747-5C7641F6CB97}"
 EndProject
@@ -26,7 +24,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCodeGenerator", "GCodeGene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCodeGeneratorTests", "GCodeGeneratorTests\GCodeGeneratorTests.csproj", "{E1DC2354-8BFC-4546-9285-AE5AE56D585A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCAD_GUI", "AutoCADTool\AutoCAD_GUI.csproj", "{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCADTool", "AutoCADTool\AutoCADTool.csproj", "{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceLib", "InterfaceLib\InterfaceLib.csproj", "{A64802B5-712D-42D1-A383-12D3FFBB2A7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,10 +46,6 @@ Global
 		{A3CFF06B-E14A-426B-9A73-A510A2993BB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3CFF06B-E14A-426B-9A73-A510A2993BB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3CFF06B-E14A-426B-9A73-A510A2993BB2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA4ADADB-54D3-4CB6-BAB9-0D613B1ADB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA4ADADB-54D3-4CB6-BAB9-0D613B1ADB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA4ADADB-54D3-4CB6-BAB9-0D613B1ADB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA4ADADB-54D3-4CB6-BAB9-0D613B1ADB01}.Release|Any CPU.Build.0 = Release|Any CPU
 		{27AF0F97-1403-438E-9747-5C7641F6CB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{27AF0F97-1403-438E-9747-5C7641F6CB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27AF0F97-1403-438E-9747-5C7641F6CB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -78,6 +74,10 @@ Global
 		{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A64802B5-712D-42D1-A383-12D3FFBB2A7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A64802B5-712D-42D1-A383-12D3FFBB2A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A64802B5-712D-42D1-A383-12D3FFBB2A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A64802B5-712D-42D1-A383-12D3FFBB2A7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
