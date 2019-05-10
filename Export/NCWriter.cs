@@ -12,7 +12,12 @@ namespace Export
 
         public static bool Export(GCode gcode, string path)
         {
-
+//            j
+  //              h\
+    //            k
+      //          k
+        //        g
+    
             return true;
         }
     }
