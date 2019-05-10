@@ -12,8 +12,10 @@ namespace Import.Tests
     public class FileReaderTests 
     {
         [TestMethod()]
-        public void ReadTest() { 
-        
-       }
+        public void ReadTest() {
+           string data =    Import.FileReader.Read();
+           Assert.AreEqual("bla", data);
+
+        }
     }
 }

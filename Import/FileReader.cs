@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autodesk.AutoCAD.Geometry;
+
 namespace Import
 {
-   public class FileReader
+   public class FileReader : I
     {
         //?????Input parameter/////
         public static string Read()
