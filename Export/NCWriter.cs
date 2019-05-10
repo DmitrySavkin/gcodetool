@@ -6,9 +6,4 @@ using System.Threading.Tasks;
 
 namespace Export
 {
-    public class NCWriter
-    {
-
-    }
-}
-
+    

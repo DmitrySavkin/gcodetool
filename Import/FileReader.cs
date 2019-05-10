@@ -7,7 +7,7 @@ using Autodesk.AutoCAD.Geometry;
 
 namespace Import
 {
-   public class FileReader : I
+   public class FileReader 
     {
         //?????Input parameter/////
         public static string Read()

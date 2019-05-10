@@ -26,7 +26,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCADTool", "AutoCADTool\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterfaceLib", "InterfaceLib\InterfaceLib.csproj", "{A64802B5-712D-42D1-A383-12D3FFBB2A7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Export", "Export\Export.csproj", "{0E701A8B-0285-402E-82A1-B615931BF21D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAndPackagesShape", "SortAndPackagesShape\SortAndPackagesShape.csproj", "{4DA8B33E-EDC7-4F4A-867D-EA5F37ACE2F9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A64802B5-712D-42D1-A383-12D3FFBB2A7A} = {A64802B5-712D-42D1-A383-12D3FFBB2A7A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAndPackagesShapeTests", "SortAndPackagesShapeTests\SortAndPackagesShapeTests.csproj", "{BACED160-0269-44A1-9230-CDAB2765905A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportTool", "ExportTool\ExportTool.csproj", "{264DF50E-64B7-426C-9E6F-1F98439C10FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportToolTests", "ExportToolTests\ExportToolTests.csproj", "{D0E92CB8-F168-4C8D-98CA-4FC207AD9977}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackClosedShapesTests", "PackClosedShapesTests\PackClosedShapesTests.csproj", "{9ACF00F9-584C-4055-A0B1-EED031D74C55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,10 +85,26 @@ Global
 		{A64802B5-712D-42D1-A383-12D3FFBB2A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A64802B5-712D-42D1-A383-12D3FFBB2A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A64802B5-712D-42D1-A383-12D3FFBB2A7A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E701A8B-0285-402E-82A1-B615931BF21D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E701A8B-0285-402E-82A1-B615931BF21D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E701A8B-0285-402E-82A1-B615931BF21D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E701A8B-0285-402E-82A1-B615931BF21D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DA8B33E-EDC7-4F4A-867D-EA5F37ACE2F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA8B33E-EDC7-4F4A-867D-EA5F37ACE2F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA8B33E-EDC7-4F4A-867D-EA5F37ACE2F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA8B33E-EDC7-4F4A-867D-EA5F37ACE2F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BACED160-0269-44A1-9230-CDAB2765905A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BACED160-0269-44A1-9230-CDAB2765905A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BACED160-0269-44A1-9230-CDAB2765905A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BACED160-0269-44A1-9230-CDAB2765905A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{264DF50E-64B7-426C-9E6F-1F98439C10FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{264DF50E-64B7-426C-9E6F-1F98439C10FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{264DF50E-64B7-426C-9E6F-1F98439C10FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{264DF50E-64B7-426C-9E6F-1F98439C10FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0E92CB8-F168-4C8D-98CA-4FC207AD9977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0E92CB8-F168-4C8D-98CA-4FC207AD9977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0E92CB8-F168-4C8D-98CA-4FC207AD9977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0E92CB8-F168-4C8D-98CA-4FC207AD9977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ACF00F9-584C-4055-A0B1-EED031D74C55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ACF00F9-584C-4055-A0B1-EED031D74C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ACF00F9-584C-4055-A0B1-EED031D74C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ACF00F9-584C-4055-A0B1-EED031D74C55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
