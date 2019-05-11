@@ -5,10 +5,11 @@ namespace ConverterGUI
 {
     class TestRibbon
     {
-        //[CommandMethodAttribute("Teste")]
+        [CommandMethodAttribute("Teste")]
         [CommandMethod("testmyRibbon", CommandFlags.Transparent)]
         public void Testme()
         {
+            System.Windows.Forms.MessageBox.Show("Acad-Addin");
             // WICHTIG! für Ribbon verweise auf .NET DLL
             RibbonControl ribbon = ComponentManager.Ribbon;
             if (ribbon != null)
