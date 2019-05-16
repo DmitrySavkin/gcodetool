@@ -17,4 +17,5 @@ Um das Branch zu wechseln, tipp den Befehl
      git checkout <Name  des Branches>
 
 Um zu pushen, tipp den Befehl
+     
      git push origin -u <Name des Branches>
