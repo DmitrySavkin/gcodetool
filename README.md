@@ -3,7 +3,7 @@
 ***
 Ab jetzt besteht dieses Repository aus 2 Branches. 
 
-Das Branch **master** erhält ein funktionierender getesteter code.
+Das Branch **master** erhält einen funktionierenden getesteten code.
  
 Das Branch **developer** erhält ein jetzt bearbeiter Code.
 
@@ -20,3 +20,8 @@ Um das Branch zu wechseln, tipp den Befehl
 Um zu pushen, tipp den Befehl
      
      git push origin -u <Name des Branches>
+
+### Werkzeuge
+
+* AutoCAD 2019
+* Net Framework 4.8
