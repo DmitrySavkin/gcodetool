@@ -9,7 +9,7 @@ Das Branch **developer** erhält ein jetzt bearbeiter Code.
 
 Pushen auf dieses Branch mit dem Befehl
 
-     git push -u origin developer
+     git push  origin -u developer
  
 
 Um das Branch zu wechseln, tipp den Befehl
