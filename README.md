@@ -2,7 +2,7 @@
 ***
 Ab jetzt besteht dieses Repository aus 2 Branches. 
 
-Das Branch **master** erhält ein funktionierender getesteter code.
+Das Branch **master** erhält einen funktionierenden getesteten code.
  
 Das Branch **developer** erhält ein jetzt bearbeiter Code.
 
