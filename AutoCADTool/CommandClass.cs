@@ -18,6 +18,8 @@ namespace AutoCADTool
             Document autoCadDoc = Application.DocumentManager.MdiActiveDocument;
             if (autoCadDoc == null)
             {
+                Polyline3d d;
+
                 throw new NullReferenceException("Autocad can not be called");
             }
             Database db = autoCadDoc.Database;
