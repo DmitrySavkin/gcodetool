@@ -13,6 +13,7 @@ namespace AutoCADTool
 {
     public class CommandClass
     {
+        //Testmethode. Ein bischen ausprobiert, wie die Kommanden funktionieren 
         [CommandMethod("TestComand")]
         public void RunCommand()
         {
@@ -53,6 +54,7 @@ namespace AutoCADTool
 
         }
 
+        //Testmethode. Ein bischen ausprobiert, wie die Kommanden funktionieren
         [CommandMethod("TestColor")]
         public void ChangeColor()
         {
@@ -132,6 +134,9 @@ namespace AutoCADTool
 
         [CommandMethod("GetPolyline")]
         public void GetsPolyLine() {
+            const string polyline = "Polyline";//Um  die Tippfehler beim switch zu vermeiden,
+                                               //würde ich vorschlagen
+                                               //eine Variable einzuführen
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             try
             {
@@ -162,7 +167,13 @@ namespace AutoCADTool
                                 if (entity != null)
                                 {
                                     string s = entity.GetType().Name;
-                                    ed.WriteMessage(s);
+                                    switch (s)
+                                    {
+                                        case polyline:
+                                            ed.WriteMessage(s  + "YEAP");
+                                            break;
+                                    }
+
                                 }
                             }
                         }
