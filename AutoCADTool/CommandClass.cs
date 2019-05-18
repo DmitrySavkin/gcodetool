@@ -173,6 +173,8 @@ namespace AutoCADTool
                                         case polyline:
                                             ed.WriteMessage(s  + "YEAP");
                                             Polyline p = (Polyline)entity;
+                                            Polyline2d p2 = (Polyline2d)entity;
+                                            //PolylineCurve2d p3 = entity;
                                             Console.WriteLine(p);
                                             break;
                                     }
