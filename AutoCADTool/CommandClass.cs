@@ -167,13 +167,15 @@ namespace AutoCADTool
                                 if (entity != null)
                                 {
                                     string s = entity.GetType().Name;
+                                    ed.WriteMessage(s + "  TYPE");
                                     switch (s)
                                     {
                                         case polyline:
                                             ed.WriteMessage(s  + "YEAP");
+                                            Polyline p = (Polyline)entity;
+                                            Console.WriteLine(p);
                                             break;
                                     }
-
                                 }
                             }
                         }
