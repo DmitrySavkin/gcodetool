@@ -8,11 +8,51 @@ using Autodesk.AutoCAD.Runtime;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.EditorInput;
 using Autodesk.AutoCAD.Geometry;
+using Autodesk.AutoCAD.Colors;
 
 namespace AutoCADTool
 {
     public class CommandClass
     {
+        
+      /*  public CommandClass()
+        {
+            autoCadDoc = Application.DocumentManager.MdiActiveDocument;
+            if (autoCadDoc == null)
+            {
+                Polyline3d d;
+
+                throw new NullReferenceException("Autocad can not be called");
+            }
+            db = autoCadDoc.Database;
+            if (db == null)
+            {
+                Polyline3d d;
+                throw new NullReferenceException("Autocad can not be called");
+            }
+            using (Transaction tr = db.TransactionManager.StartTransaction())
+            {
+                LayerTable lt = tr.GetObject(db.LayerTableId, OpenMode.ForRead) as LayerTable;
+                const string outerLayerStr = "Aussene Kanten";
+                if (!lt.Has(outerLayerStr))
+                {
+                    LayerTableRecord outerLayer = new LayerTableRecord();
+                    outerLayer.Name = outerLayerStr;
+                    lt.Add(outerLayer);
+                    db.Clayer = lt[outerLayerStr];
+                }
+                const string innerLayerStr = "Innere Kanten";
+                if (!lt.Has(innerLayerStr))
+                {
+                    LayerTableRecord innerLayer = new LayerTableRecord();
+                    innerLayer.Name = innerLayerStr;
+                    lt.Add(innerLayer);
+                    db.Clayer = lt[innerLayerStr];
+                }
+                tr.Commit();
+            }
+        }*/
+
         //Testmethode. Ein bischen ausprobiert, wie die Kommanden funktionieren 
         [CommandMethod("TestComand")]
         public void RunCommand()
@@ -20,6 +60,7 @@ namespace AutoCADTool
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             try
             {
+                // Document autoCadDoc = Application.DocumentManager.MdiActiveDocument;
                 Document autoCadDoc = Application.DocumentManager.MdiActiveDocument;
 
                 if (autoCadDoc == null)
@@ -29,7 +70,20 @@ namespace AutoCADTool
                     throw new NullReferenceException("Autocad can not be called");
                 }
 
+                autoCadDoc = Application.DocumentManager.MdiActiveDocument;
+                if (autoCadDoc == null)
+                {
+                    Polyline3d d;
+
+                    throw new NullReferenceException("Autocad can not be called");
+                }
                 Database db = autoCadDoc.Database;
+                if (db == null)
+                {
+                    Polyline3d d;
+                    throw new NullReferenceException("Autocad can not be called");
+                }
+               
                 Transaction t = db.TransactionManager.StartTransaction();
                 BlockTable bt = t.GetObject(db.BlockTableId, OpenMode.ForRead) as BlockTable;
 
@@ -69,8 +123,12 @@ namespace AutoCADTool
 
                     throw new NullReferenceException("Autocad can not be called");
                 }
-
                 Database db = autoCadDoc.Database;
+                if (db == null)
+                {
+                    Polyline3d d;
+                    throw new NullReferenceException("Autocad can not be called");
+                }
                 using (Transaction t = db.TransactionManager.StartTransaction())
                 {
                     PromptSelectionResult psr = ed.GetSelection();
@@ -98,7 +156,7 @@ namespace AutoCADTool
             }
         }
 
-        [CommandMethod("TestLayers")]
+        [CommandMethod("GetLayers")]
         public void ListLayers()
         {
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
@@ -106,23 +164,48 @@ namespace AutoCADTool
             {
                 Document autoCadDoc = Application.DocumentManager.MdiActiveDocument;
 
+            //    autoCadDoc = Application.DocumentManager.MdiActiveDocument;
                 if (autoCadDoc == null)
                 {
                     Polyline3d d;
 
                     throw new NullReferenceException("Autocad can not be called");
                 }
-
                 Database db = autoCadDoc.Database;
-                using (Transaction t = db.TransactionManager.StartTransaction())
+                if (db == null)
                 {
-                    LayerTable lt = t.GetObject(db.LayerTableId, OpenMode.ForRead) as LayerTable;
-                    foreach (var layerID in lt)
+                    throw new NullReferenceException("Autocad can not be called");
+                }
+                using (Transaction tr = db.TransactionManager.StartTransaction())
+                {
+                    LayerTable lt = tr.GetObject(db.LayerTableId, OpenMode.ForRead) as LayerTable;
+                    
+                    if (!lt.Has(VertexTool.Vertex.OutherVertexSt))
                     {
-                        LayerTableRecord ltr = t.GetObject(layerID, OpenMode.ForRead) as LayerTableRecord;
-                        ed.WriteMessage(ltr.Name + System.Environment.NewLine);
+                        lt.UpgradeOpen();
+                        LayerTableRecord outerLayer = new LayerTableRecord();
+                        outerLayer.Name = VertexTool.Vertex.OutherVertexSt;
+                        outerLayer.Color = Color.FromColorIndex(ColorMethod.ByAci, VertexTool.Vertex.OutherColor);
+                        lt.Add(outerLayer);
+                        tr.AddNewlyCreatedDBObject(outerLayer, true);
+                        db.Clayer = lt[VertexTool.Vertex.OutherVertexSt];
                     }
-                 //   t.Commit();
+                    
+                    if (!lt.Has(VertexTool.Vertex.InnerVertexSt))
+                    {
+
+                        lt.UpgradeOpen();
+                        LayerTableRecord innerLayer = new LayerTableRecord();
+                        innerLayer.Name = VertexTool.Vertex.InnerVertexSt;
+                      
+                        innerLayer.Color = Color.FromColorIndex(ColorMethod.ByAci, VertexTool.Vertex.InnereColor);
+                        lt.Add(innerLayer);
+                        tr.AddNewlyCreatedDBObject(innerLayer, true);
+                        LinetypeTable ltt = tr.GetObject(db.LinetypeTableId, OpenMode.ForRead) as LinetypeTable;
+                        
+                        db.Clayer = lt[VertexTool.Vertex.InnerVertexSt];
+                    }
+                    tr.Commit();
                 }
             }
             catch (System.Exception ex)
@@ -133,10 +216,9 @@ namespace AutoCADTool
 
 
         [CommandMethod("GetPolyline")]
-        public void GetsPolyLine() {
-            const string polyline = "Polyline";//Um  die Tippfehler beim switch zu vermeiden,
-                                               //würde ich vorschlagen
-                                               //eine Variable einzuführen
+        public void GetsPolyLine()
+        {
+
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             try
             {
@@ -150,6 +232,7 @@ namespace AutoCADTool
                 }
 
                 Database db = autoCadDoc.Database;
+                List<Entity> polylines = new List<Entity>();
                 using (Transaction t = db.TransactionManager.StartTransaction())
                 {
                     PromptSelectionResult sPrompt = ed.SelectImplied();
@@ -168,21 +251,14 @@ namespace AutoCADTool
                                 {
                                     string s = entity.GetType().Name;
                                     ed.WriteMessage(s + "  TYPE");
-                                    switch (s)
-                                    {
-                                        case polyline:
-                                            ed.WriteMessage(s  + "YEAP");
-                                            Polyline p = (Polyline)entity;
-                                            Polyline2d p2 = (Polyline2d)entity;
-                                            //PolylineCurve2d p3 = entity;
-                                            Console.WriteLine(p);
-                                            break;
-                                    }
+                                    polylines.Add(entity);
                                 }
+
                             }
                         }
+                        VertexTool.Vertex.InnerPolyline(polylines);
                     }
-                      t.Commit();
+                    t.Commit();
                 }
             }
             catch (System.Exception ex)
