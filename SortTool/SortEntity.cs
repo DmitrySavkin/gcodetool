@@ -64,5 +64,40 @@ namespace SortTool
             colpt[vn] = Ligne.GetPoint3dAt(0);
             return wn_PnPoly(pt, colpt, vn) != 0;
         }
+
+        private double isLeft(Point3d P0, Point3d P1, Point3d P2)
+        {
+            return ((P1.X - P0.X) * (P2.Y - P0.Y) - (P2.X - P0.X) * (P1.Y - P0.Y));
+        }
+
+        private double wn_PnPoly(Point3d P, Point3d[] V, double n)
+        {
+            double wn = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (V[i].Y <= P.Y)
+                {
+                    if (V[i + 1].Y > P.Y)
+                    {
+                        if (isLeft(V[i], V[i + 1], P) > 0)
+                        {
+                            wn = wn + 1;
+                        }
+                    }
+                }
+                else
+                {
+                    if (V[i + 1].Y <= P.Y)
+                    {
+                        if (isLeft(V[i], V[i + 1], P) < 0)
+                        {
+                            wn = wn - 1;
+                        }
+                    }
+                }
+            }
+            return wn;
+        }
+
     }
 }
