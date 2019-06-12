@@ -50,10 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CircleSort.cs" />
     <Compile Include="Class1.cs" />
-    <Compile Include="PolylineCompare.cs" />
+    <Compile Include="EntityOrder.cs" />
+    <Compile Include="SortEntity.cs" />
+    <Compile Include="PolylineSort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sort.cs" />
+    <Compile Include="SortFabric.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VertexTool\VertexTool.csproj">
+      <Project>{ce0b06ae-5747-4412-bc76-7d3eedee7fb2}</Project>
+      <Name>VertexTool</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

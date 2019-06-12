@@ -61,6 +61,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SortTool\SortTool.csproj">
+      <Project>{54fda61c-163b-4a0d-b506-d33f2937b344}</Project>
+      <Name>SortTool</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VertexTool\VertexTool.csproj">
       <Project>{ce0b06ae-5747-4412-bc76-7d3eedee7fb2}</Project>
       <Name>VertexTool</Name>

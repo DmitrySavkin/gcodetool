@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace SortTool
 {
-    class PolylineCompare : IComparer<Polyline>
+    public class EntityOrder
     {
-        public int Compare(Polyline p1, Polyline p2)
+
+
+        public static bool isInside(Entity e1, Entity e2)
         {
-            throw new NotImplementedException();
+            return SortFabric.SortEntity(e1, e2).HasInside();
+
         }
     }
 }
