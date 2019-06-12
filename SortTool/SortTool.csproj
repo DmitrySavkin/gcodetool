@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="CircleVerifier.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="EntityInfo.cs" />
     <Compile Include="EntityOrder.cs" />
     <Compile Include="EntityVerifier.cs" />
     <Compile Include="PolylineVerifier.cs" />

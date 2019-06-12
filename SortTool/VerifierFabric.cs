@@ -12,17 +12,18 @@ namespace SortTool
         public static EntityVerifier SortEntity(Entity e1, Entity e2)
         {
 
-            switch (e1.GetType().Name)
+            var p = e1 as Polyline;
+            if (p != null)
             {
-                case "Polyline":
-                    return new PolylineVerifier(e1, e2);
-                case "Circle":
-                    return new CircleVerifier(e1,e2);
-                default:
-                    throw new NullReferenceException("The sort is null");
-
+                return new PolylineVerifier(e1, e2);
+            }                  
+            var c = e1 as Circle;
+            if (c != null)
+            {
+                return new CircleVerifier(e1, e2);
             }
-
+            
+           throw new NullReferenceException("The sort is null");
         }
     }
 }

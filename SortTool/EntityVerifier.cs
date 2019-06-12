@@ -15,21 +15,44 @@ namespace SortTool
 
         public EntityVerifier(Entity e1, Entity e2)
         {
+            if (e1 == null)
+            {
+                throw new NullReferenceException("The entity e1 is null");
+
+            }
+
+            if (e2 == null)
+            {
+                throw new NullReferenceException("The entity e2 is null");
+            }
+
             this.E1 = e1;
             this.E2 = e2;
         }
 
+        /// <summary>
+        /// Checks if current goemetry contains any other one.
+        /// </summary>
+        /// <returns>Return true, if the geometry contains any other one.</returns>
         public abstract bool HasInside();
 
-        public bool isPointInCircle(Point3d p, Circle c)
+        protected bool isPointInCircle(Point3d p, Circle c)
         {
             return (p.X - c.Center.X) * (p.X - c.Center.X) + (p.Y - c.Center.Y) * (p.Y - c.Center.Y)
                 <= (c.Radius * c.Radius);
         }
 
-        public bool isPointInPolyline(Point3d pt, Polyline Ligne)
+        protected bool isPointInPolyline(Point3d pt, Polyline Ligne)
         {
-            if (Ligne == null) return false;
+            if (Ligne == null)
+            {
+                throw new NullReferenceException("The Polyline is null");
+            }
+            if (pt == null)
+            {
+                throw new NullReferenceException("The Point3d is null");
+            }
+
             if (Ligne.StartPoint != Ligne.EndPoint)
             {
                 return false;

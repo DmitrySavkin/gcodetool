@@ -7,49 +7,10 @@ using Autodesk.AutoCAD.Runtime;
 using System;
 using System.Collections.Generic;
 using SortTool;
+using System.IO;
 
 namespace AutoCADTool
 {
-    public class EntityInfo
-    {
-        private Entity entity;
-        private bool done;
-
-        public EntityInfo(Entity entity)
-        {
-            this.entity = entity;
-            this.done = false;
-        }
-
-        public bool Done
-        {
-            set
-            {
-                Hatch h;
-                this.done = value;
-            }
-            get
-            {
-                return this.done;
-
-            }
-        }
-
-        public Entity Entity
-        {
-            set
-            {
-
-                this.entity = value;
-
-            }
-            get
-            {
-                return this.entity;
-
-            }
-        }
-    }
 
     public class CommandClass
     {
@@ -281,7 +242,7 @@ namespace AutoCADTool
                     }
                     if (sPrompt.Status == PromptStatus.OK)
                     {
-                        bool test = false;
+                      
                         foreach (SelectedObject item in sPrompt.Value)
                         {
                             if (item != null)
@@ -320,51 +281,7 @@ namespace AutoCADTool
 
         }
         // private void Ordered(List<E>)
-        private void genOrderedEntities(List<EntityInfo> allEntities)
-        {
-            List<EntityInfo> resEntities = new List<EntityInfo>();
-            bool wasProcessed;
-            do
-            {
-
-                wasProcessed = false;
-                for (int i = 0; i < allEntities.Count; i++)
-                {
-                    EntityInfo curEntity = allEntities[i];
-                    if (curEntity.Done) continue;
-                    bool hasInternals = false;
-                    for (int j = 0; j < allEntities.Count; j++)
-                    {
-                        EntityInfo compEntity = allEntities[j];
-                        if (curEntity == compEntity || compEntity.Done) continue;
-                        if (EntityOrder.isInside(compEntity.Entity, curEntity.Entity))
-                        {
-                            hasInternals = true;
-                        }
-                    }
-                    if (!hasInternals)
-                    {
-                        resEntities.Add(curEntity);
-                        wasProcessed = true;
-                        curEntity.Done = true;
-                    }
-                }
-            } while (wasProcessed);
-            for (int i = 0; i < resEntities.Count; i++)
-            {
-                Entity curEntity = resEntities[i].Entity;
-                Polyline p = curEntity as Polyline;
-                if (p == null) continue;
-                if (p.StartPoint != p.EndPoint)
-                {
-                    Console.WriteLine("Bad figure here");
-                    
-                }
-            }
-            int iii = 2;
-        }
-
-      
+             
 
 
     

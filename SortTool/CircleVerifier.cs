@@ -17,11 +17,13 @@ namespace SortTool
         public override bool HasInside()
         {
 
-            if (E2.GetType().Name == "Polyline")
+            var p = E2 as Polyline;
+            if (p != null)
             {
                 return CircleInPolyline();
             }
-            if (E2.GetType().Name == "Circle")
+            var c = E2 as Circle;
+            if (c != null)
             {
                 return CircleInCircle();
             }
