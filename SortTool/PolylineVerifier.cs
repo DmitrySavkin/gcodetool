@@ -30,12 +30,16 @@ namespace SortTool
 
         public override bool HasInside()
         {
-            if (E2.GetType().Name == "Polyline")
-            {
+            var p2 = E2 as Polyline;
+            var c2 = E2 as Circle;
+            if (p2 != null) {
+            //if (E2.GetType().Name == "Polyline")
+            //{
                 return PolylineInPolyline();
             }
-            if (E2.GetType().Name == "Circle")
-            {
+            if (c2 != null) {
+            //if (E2.GetType().Name == "Circle")
+            //{
                 return PolylineInCircle();
             }
 
