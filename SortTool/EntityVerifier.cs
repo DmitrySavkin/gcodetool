@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace SortTool
 {
-    public abstract class SortEntity
+    public abstract class EntityVerifier
     {
         public Entity E1 { get; }
         public Entity E2 { get; }
 
-        public SortEntity(Entity e1, Entity e2)
+        public EntityVerifier(Entity e1, Entity e2)
         {
             this.E1 = e1;
             this.E2 = e2;

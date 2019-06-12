@@ -7,9 +7,9 @@ using Autodesk.AutoCAD.DatabaseServices;
 
 namespace SortTool
 {
-    public class PolylineSort : SortEntity
+    public class PolylineVerifier : EntityVerifier
     {
-        public PolylineSort(Entity e1, Entity e2) : base(e1, e2)
+        public PolylineVerifier(Entity e1, Entity e2) : base(e1, e2)
         {
             
         }

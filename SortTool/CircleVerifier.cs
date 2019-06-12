@@ -8,9 +8,9 @@ using Autodesk.AutoCAD.Geometry;
 
 namespace SortTool
 {
-    public class CircleSort : SortEntity
+    public class CircleVerifier : EntityVerifier
     {
-        public CircleSort(Entity e1, Entity e2) : base(e1, e2)
+        public CircleVerifier(Entity e1, Entity e2) : base(e1, e2)
         {
         }
 
