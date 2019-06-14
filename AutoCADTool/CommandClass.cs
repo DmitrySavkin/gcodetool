@@ -12,7 +12,7 @@ using System.IO;
 namespace AutoCADTool
 {
 
-    public class CommandClass
+    public class CommandClass : IExtensionApplication
     {
 
         /*  public CommandClass()
@@ -156,7 +156,7 @@ namespace AutoCADTool
             }
         }
 
-        [CommandMethod("GetLayers")]
+        
         public void ListLayers()
         {
             Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
@@ -270,7 +270,7 @@ namespace AutoCADTool
                         //VertexTool.Vertex.InnerPolyline(polylines);
                     }
 
-                    genOrderedEntities(allEntities);
+                  //  EntityOrder.getOrderedEntities(allEntities);
                     t.Commit();
                 }
             }
@@ -280,11 +280,21 @@ namespace AutoCADTool
             }
 
         }
+
+        public void Initialize()
+        {
+            ListLayers();
+        }
+
+        public void Terminate()
+        {
+            
+        }
         // private void Ordered(List<E>)
-             
 
 
-    
+
+
 
         /*
         public static bool IsInsideThePolygon(Polyline p, Point2d pt)

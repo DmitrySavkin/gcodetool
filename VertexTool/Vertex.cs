@@ -15,7 +15,7 @@ namespace VertexTool
         public static short InnereColor = 4; 
         public static short OutherColor = 2;
         public static string InnerVertexSt = "Innere Kanten";
-        public static string OutherVertexSt = "Aussene Kanten";
+        public static string OutherVertexSt = "Aussere Kanten";
         // public enum PolygonSelectionMode { Crossing, Window }
 
         public static List<Entity> InnerPolyline(List<Entity> polylines)
