@@ -18,7 +18,7 @@ namespace VertexTool
         public static string OutherVertexSt = "Aussere Kanten";
         // public enum PolygonSelectionMode { Crossing, Window }
 
-        public static List<Entity> InnerPolyline(List<Entity> polylines)
+        public static List<Entity> InnerEntities(List<Entity> polylines)
         {
             const string polyline = "Polyline";//Um  die Tippfehler beim switch zu vermeiden,
                                                //würde  ich vorschlagen
@@ -63,7 +63,7 @@ namespace VertexTool
             return e.Layer == OutherVertexSt;
         }
 
-        public static List<Entity> OuterPolyline(List<Entity> polylines)
+        public static List<Entity> OuterEntyties(List<Entity> polylines)
         {
             const string polyline = "Polyline";//Um  die Tippfehler beim switch zu vermeiden,
                                                //würde  ich vorschlagen
