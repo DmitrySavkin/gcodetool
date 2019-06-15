@@ -12,9 +12,21 @@ namespace GCodeTool
     {
         public Circle Circle { get; }
 
-        public CircleCommand(Circle c)
+        public Point2d BasePoint
         {
+            get;
+        }
+
+
+        public CircleCommand(Point2d basePoint, Circle c)
+        {
+            this.BasePoint = basePoint;
             this.Circle = c;
+        }
+
+        private Point2d getRealPoint(Point2d p)
+        {
+            return new Point2d(p.X - BasePoint.X, p.Y - BasePoint.Y);
         }
 
         public Command Run()
@@ -22,7 +34,7 @@ namespace GCodeTool
             Command c = new Command();
        
             Point2d center = new Point2d(Circle.Center.X, Circle.Center.Y);
-            c.MoveCircle(center, Circle.Radius);
+            c.MoveCircle(getRealPoint(center), Circle.Radius);
             return c;
         }
 

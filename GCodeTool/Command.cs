@@ -48,7 +48,7 @@ namespace GCodeTool
         }
         public void MoveCircle(Point2d center, double radius)
         {//G02 X5. Y0. I-5. J0.
-            Position(center);
+            Position(new Point2d(center.X + radius, center.Y));
             RotationOn();
             Down();
             CoolingOn();
