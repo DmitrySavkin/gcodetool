@@ -18,9 +18,9 @@ namespace SortTool
         }
 
 
-        private void genOrderedEntities(List<EntityInfo> allEntities)
+        public static List<Entity> GetOrderedEntities(List<EntityInfo> allEntities)
         {
-            List<EntityInfo> resEntities = new List<EntityInfo>();
+            List<Entity> resEntities = new List<Entity>();
             bool wasProcessed;
             do
             {
@@ -42,13 +42,13 @@ namespace SortTool
                     }
                     if (!hasInternals)
                     {
-                        resEntities.Add(curEntity);
+                        resEntities.Add(curEntity.Entity);
                         wasProcessed = true;
                         curEntity.Done = true;
                     }
                 }
             } while (wasProcessed);
-            for (int i = 0; i < resEntities.Count; i++)
+         /*   for (int i = 0; i < resEntities.Count; i++)
             {
                 Entity curEntity = resEntities[i].Entity;
                 Polyline p = curEntity as Polyline;
@@ -58,7 +58,9 @@ namespace SortTool
                     Console.WriteLine("Bad figure here");
 
                 }
-            }
+
+            }*/
+            return resEntities;
         }
 
 

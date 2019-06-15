@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace GCodeTool
 {
-    public class CircleInterpretator
+    public interface ITask
     {
+
+        Command Run();
     }
 }

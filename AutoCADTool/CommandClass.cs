@@ -7,6 +7,7 @@ using Autodesk.AutoCAD.Runtime;
 using System;
 using System.Collections.Generic;
 using SortTool;
+using GCodeTool;
 using System.IO;
 
 namespace AutoCADTool
@@ -255,13 +256,7 @@ namespace AutoCADTool
                                     {
                                         allEntities.Add(new EntityInfo(entity));
                                     }
-                                    if (entName == "Polyline")
-                                    {
-                                        Polyline p3 = (Polyline)entity;
-                                        Point2d p = new Point2d(2226, 1633);
-                                       // test = IsInsideThePolygon(p3, p);
-                                    }
-                                    ed.WriteMessage("Type: " + entName);
+                                     ed.WriteMessage("Type: " + entName);
                                     //polylines.Add(entity);
                                 }
 
@@ -270,9 +265,14 @@ namespace AutoCADTool
                         //VertexTool.Vertex.InnerPolyline(polylines);
                     }
 
-                  //  EntityOrder.getOrderedEntities(allEntities);
+                    
                     t.Commit();
                 }
+                List<Entity> sortedEntities = EntityOrder.GetOrderedEntities(allEntities);
+                string code = CommandManager.Gcode(sortedEntities);
+                Form1 f = new Form1();
+                f.SetTextGCode(code);
+                f.Show();
             }
             catch (System.Exception ex)
             {

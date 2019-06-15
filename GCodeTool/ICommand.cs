@@ -1,5 +1,4 @@
-﻿using Autodesk.AutoCAD.DatabaseServices;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace GCodeTool
 {
-    public abstract class Interpretator
-    {
-  
-    }
+   public interface ICommand
+   {
+        void Internal();
+
+        void Outher();
+   }
 }
