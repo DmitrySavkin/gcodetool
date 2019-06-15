@@ -58,6 +58,11 @@ namespace VertexTool
             return innerEntities;
         }
 
+        public static bool isOuter(Entity e)
+        {
+            return e.Layer == OutherVertexSt;
+        }
+
         public static List<Entity> OuterPolyline(List<Entity> polylines)
         {
             const string polyline = "Polyline";//Um  die Tippfehler beim switch zu vermeiden,
@@ -69,7 +74,7 @@ namespace VertexTool
             List<Entity> outerEntities = new List<Entity>();
             foreach (Entity e in polylines)
             {
-                if (e.Layer.Equals(Vertex.InnerVertexSt))
+                if (e.Layer.Equals(Vertex.OutherVertexSt))
                 {
                     outerEntities.Add(e);
                 }

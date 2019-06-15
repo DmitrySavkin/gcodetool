@@ -29,12 +29,22 @@ namespace GCodeTool
             return new Point2d(p.X - BasePoint.X, p.Y - BasePoint.Y);
         }
 
+        private double modifyRadius(double radius)
+        {
+            double d = CommandManager.diam;
+            if (!VertexTool.Vertex.isOuter(Circle))
+            {
+                d = -d;
+            }
+            return radius + d;
+        }
+        
         public Command Run()
         {
             Command c = new Command();
        
             Point2d center = new Point2d(Circle.Center.X, Circle.Center.Y);
-            c.MoveCircle(getRealPoint(center), Circle.Radius);
+            c.MoveCircle(getRealPoint(center), modifyRadius(Circle.Radius));
             return c;
         }
 

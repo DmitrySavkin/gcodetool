@@ -10,6 +10,8 @@ namespace GCodeTool
 {
    public class CommandManager
     {
+        public const double diam = 2.0;
+
         private static Point2d getBasePoint(List<Entity> entities)
         {
             double minX = Double.MaxValue, minY = Double.MaxValue;
