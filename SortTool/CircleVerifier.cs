@@ -35,7 +35,7 @@ namespace SortTool
         {
             Circle c1 = (Circle)E1;
             Circle c2 = (Circle)E2;
-            return isPointInCircle(PointOfCircle(c1), c2);
+            return IsPointInCircle(PointOfCircle(c1), c2);
         }
 
         private bool CircleInPolyline()

@@ -55,6 +55,7 @@
     <Compile Include="EntityInfo.cs" />
     <Compile Include="EntityOrder.cs" />
     <Compile Include="EntityVerifier.cs" />
+    <Compile Include="LineVerifier.cs" />
     <Compile Include="PolylineVerifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VerifierFabric.cs" />

@@ -22,6 +22,12 @@ namespace SortTool
             {
                 return new CircleVerifier(e1, e2);
             }
+
+            var l = e1 as Line;
+            if (l != null)
+            {
+                return new LineVerifier(e1, e2);
+            }
             
            throw new NullReferenceException("The sort is null");
         }

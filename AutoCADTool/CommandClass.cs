@@ -16,44 +16,6 @@ namespace AutoCADTool
     public class CommandClass : IExtensionApplication
     {
 
-        /*  public CommandClass()
-          {
-              autoCadDoc = Application.DocumentManager.MdiActiveDocument;
-              if (autoCadDoc == null)
-              {
-                  Polyline3d d;
-
-                  throw new NullReferenceException("Autocad can not be called");
-              }
-              db = autoCadDoc.Database;
-              if (db == null)
-              {
-                  Polyline3d d;
-                  throw new NullReferenceException("Autocad can not be called");
-              }
-              using (Transaction tr = db.TransactionManager.StartTransaction())
-              {
-                  LayerTable lt = tr.GetObject(db.LayerTableId, OpenMode.ForRead) as LayerTable;
-                  const string outerLayerStr = "Aussene Kanten";
-                  if (!lt.Has(outerLayerStr))
-                  {
-                      LayerTableRecord outerLayer = new LayerTableRecord();
-                      outerLayer.Name = outerLayerStr;
-                      lt.Add(outerLayer);
-                      db.Clayer = lt[outerLayerStr];
-                  }
-                  const string innerLayerStr = "Innere Kanten";
-                  if (!lt.Has(innerLayerStr))
-                  {
-                      LayerTableRecord innerLayer = new LayerTableRecord();
-                      innerLayer.Name = innerLayerStr;
-                      lt.Add(innerLayer);
-                      db.Clayer = lt[innerLayerStr];
-                  }
-                  tr.Commit();
-              }
-          }*/
-
         //Testmethode. Ein bischen ausprobiert, wie die Kommanden funktionieren 
         [CommandMethod("TestComand")]
         public void RunCommand()
@@ -74,7 +36,7 @@ namespace AutoCADTool
                 autoCadDoc = Application.DocumentManager.MdiActiveDocument;
                 if (autoCadDoc == null)
                 {
-                    Polyline3d d;
+                    
 
                     throw new NullReferenceException("Autocad can not be called");
                 }
@@ -120,14 +82,12 @@ namespace AutoCADTool
 
                 if (autoCadDoc == null)
                 {
-                    Polyline3d d;
-
                     throw new NullReferenceException("Autocad can not be called");
                 }
                 Database db = autoCadDoc.Database;
                 if (db == null)
                 {
-                    Polyline3d d;
+                    
                     throw new NullReferenceException("Autocad can not be called");
                 }
                 using (Transaction t = db.TransactionManager.StartTransaction())
@@ -227,7 +187,7 @@ namespace AutoCADTool
 
                 if (autoCadDoc == null)
                 {
-                    Polyline3d d;
+                   
 
                     throw new NullReferenceException("Autocad can not be called");
                 }
@@ -252,17 +212,20 @@ namespace AutoCADTool
                                 if (entity != null)
                                 {
                                     string entName = entity.GetType().Name;
-                                    if (entName == "Polyline" || entName == "Circle")
-                                    {
+                                    //if (entName == "Polyline" || entName == "Circle")
+                                    //{
                                         allEntities.Add(new EntityInfo(entity));
+                                    //}
+                                    if (entName == "Hatch")
+                                    {
+                                        Hatch h = entity as Hatch;
                                     }
                                      ed.WriteMessage("Type: " + entName);
-                                    //polylines.Add(entity);
                                 }
 
                             }
                         }
-                        //VertexTool.Vertex.InnerPolyline(polylines);
+                        
                     }
 
                     
@@ -290,49 +253,6 @@ namespace AutoCADTool
         {
             
         }
-        // private void Ordered(List<E>)
-
-
-
-
-
-        /*
-        public static bool IsInsideThePolygon(Polyline p, Point2d pt)
-        {
-            double angles = 0;
-            for (int i = 0; i < p.NumberOfVertices; i++)
-            {
-
-                angles += Convert.ToDouble(pt.GetVectorTo(p.GetPoint2dAt(i)).Angle.ToString());
-
-            }
-            angles = Math.Abs(angles / (2.0 * Math.PI));
-            return angles > 0.5;
-        }
-        
-        public static bool IsInsideThePolygon2(Polyline p, Point2d pt)
-        {
-            Point2d[] points = new Point2d[p.NumberOfVertices];
-            for (int i = 0; i < p.NumberOfVertices; i++)
-            {
-                Point2d p2 = p.GetPoint2dAt(i);
-                points[i] = p2;
-
-            }
-            bool res = false;
-            int j = points.Length - 1;
-           for (int i = 0; i < points.Length; i++)
-            {
-                if (points[i].Y < pt.Y && points[j].Y >= pt.Y || points[j].Y < pt.Y && points[i].Y >= pt.Y)
-                {
-                    if (points[i].X + (pt.Y - points[i].Y) / (points[j].Y - points[i].Y) * (points[j].X - points[i].X) < pt.X)
-                    {
-                        res = !res;
-                    }
-                }
-                j = i;
-            }
-            return res;
-        }*/
+ 
     }
 }

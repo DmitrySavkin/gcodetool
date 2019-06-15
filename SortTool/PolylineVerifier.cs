@@ -25,13 +25,15 @@ namespace SortTool
         {
             Polyline p = (Polyline)E1;
             Circle c = (Circle)E2;
-            return isPointInCircle(p.GetPoint3dAt(0), c);
+            return IsPointInCircle(p.GetPoint3dAt(0), c);
         }
+
 
         public override bool HasInside()
         {
             var p2 = E2 as Polyline;
             var c2 = E2 as Circle;
+            var l2 = E2 as Line;
             if (p2 != null) {
             //if (E2.GetType().Name == "Polyline")
             //{
@@ -43,6 +45,7 @@ namespace SortTool
                 return PolylineInCircle();
             }
 
+            
             throw new TypeAccessException("The Geometrie is not defined");
         }
     }

@@ -20,19 +20,39 @@ namespace GCodeTool
 
         public CircleCommand(Point2d basePoint, Circle c)
         {
+
+            if (basePoint == null)
+            {
+                throw new NullReferenceException("The basePoint is null");
+            }
+
+            if (c == null)
+            {
+                throw new NullReferenceException("The circle is null");
+            }
             this.BasePoint = basePoint;
             this.Circle = c;
         }
 
         private Point2d getRealPoint(Point2d p)
         {
+            if (p == null)
+            {
+                throw new NullReferenceException("The point is null");
+            }
+
             return new Point2d(p.X - BasePoint.X, p.Y - BasePoint.Y);
         }
 
         private double modifyRadius(double radius)
         {
+            if (radius < 0)
+            {
+                throw new ArgumentException("The radius is less  than 0");
+            }
+
             double d = CommandManager.diam;
-            if (!VertexTool.Vertex.isOuter(Circle))
+            if (!VertexTool.Vertex.IsOuter(Circle))
             {
                 d = -d;
             }

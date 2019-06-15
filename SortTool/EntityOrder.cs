@@ -13,8 +13,10 @@ namespace SortTool
 
         public static bool isInside(Entity e1, Entity e2)
         {
-            return VerifierFabric.SortEntity(e1, e2).HasInside();
-
+          EntityVerifier ef =  VerifierFabric.SortEntity(e1, e2);
+          if (ef != null) 
+            return ef.HasInside();
+          return false;
         }
 
 

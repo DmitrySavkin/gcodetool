@@ -46,6 +46,7 @@ namespace GCodeTool
                         minY = c.Center.Y - c.Radius;
                     }
                 }
+               
             }
             if (minX == Double.MaxValue)
             {
@@ -72,12 +73,27 @@ namespace GCodeTool
                 {
                     t = new CircleCommand(basePoint, c);   
                 }
+
+                Line l = e as Line;
+                if (l != null)
+                {
+                    Polyline p1 = ConvertToPolyline(l);
+                    t = new PolylineCommand(basePoint, p1);
+                }
                 if (t != null)
                 {
                     s += t.Run().ToString();
                 }
             }
             return s;
+        }
+        //Dublicate Error
+        public static Polyline ConvertToPolyline(Line l)
+        {
+            Polyline p = new Polyline();
+            p.AddVertexAt(0, new Point2d(l.StartPoint.X, l.StartPoint.Y), 0, 0, 0);
+            p.AddVertexAt(1, new Point2d(l.EndPoint.X, l.EndPoint.Y), 0, 0, 0);
+            return p;
         }
     }
 }

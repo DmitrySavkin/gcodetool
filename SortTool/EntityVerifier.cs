@@ -36,7 +36,7 @@ namespace SortTool
         /// <returns>Return true, if the geometry contains any other one.</returns>
         public abstract bool HasInside();
 
-        protected bool isPointInCircle(Point3d p, Circle c)
+        protected bool IsPointInCircle(Point3d p, Circle c)
         {
             return (p.X - c.Center.X) * (p.X - c.Center.X) + (p.Y - c.Center.Y) * (p.Y - c.Center.Y)
                 <= (c.Radius * c.Radius);
