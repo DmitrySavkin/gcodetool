@@ -22,6 +22,10 @@ namespace SortTool
 
         public static List<Entity> GetOrderedEntities(List<EntityInfo> allEntities)
         {
+            if (allEntities == null)
+                throw new NullReferenceException("The list of entities  is null");
+            if (allEntities.Count == 0)
+                return null;
             List<Entity> resEntities = new List<Entity>();
             bool wasProcessed;
             do
