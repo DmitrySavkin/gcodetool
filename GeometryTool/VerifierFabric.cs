@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortTool
+namespace GeometryTool
 {
     public class VerifierFabric
     {
@@ -22,14 +22,15 @@ namespace SortTool
             {
                 return new CircleVerifier(e1, e2);
             }
-
-            var l = e1 as Line;
-            if (l != null)
-            {
-                return new LineVerifier(e1, e2);
-            }
-            
-           throw new NullReferenceException("The sort is null");
+            /*
+                        var l = e1 as Line;
+                        if (l != null)
+                        {
+                            return new LineVerifier(e1, e2);
+                        }
+                        */
+            //    throw new NullReferenceException("The sort is null");
+            return null;
         }
     }
 }

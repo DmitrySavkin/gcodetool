@@ -50,20 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CircleVerifier.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="EntityInfo.cs" />
     <Compile Include="EntityOrder.cs" />
-    <Compile Include="EntityVerifier.cs" />
-    <Compile Include="LineVerifier.cs" />
-    <Compile Include="PolylineVerifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VerifierFabric.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\VertexTool\VertexTool.csproj">
+    <ProjectReference Include="..\GeometryTool\GeometryTool.csproj">
+      <Project>{415bcbc5-96a1-4eb4-afe9-7bd024b9dddd}</Project>
+      <Name>GeometryTool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VertexTool\EdgeTool.csproj">
       <Project>{ce0b06ae-5747-4412-bc76-7d3eedee7fb2}</Project>
-      <Name>VertexTool</Name>
+      <Name>EdgeTool</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

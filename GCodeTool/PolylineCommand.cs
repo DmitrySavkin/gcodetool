@@ -1,5 +1,6 @@
 ﻿using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
+using SortTool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,42 +9,26 @@ using System.Threading.Tasks;
 
 namespace GCodeTool
 {
-    public class PolylineCommand : ITask
+    public class PolylineCommand : Command
     {
         public Polyline Polyline { get; }
 
-        public Point2d BasePoint
+
+
+        public PolylineCommand(Point2d basePoint, EntityInfo e): base(basePoint, e)
         {
-            get;
+            Polyline p = e.Entity as Polyline;
+            if (p != null)
+            {
+                this.Polyline = new Offset().getBias(p, base.IsOuter);
+            }
         }
 
+   
 
-        public PolylineCommand(Point2d basePoint, Polyline p)
+        public override GCodeBase Run()
         {
-            if (basePoint == null)
-            {
-                throw new NullReferenceException("The basePoint is null");
-            }
-
-            if (p == null)
-            {
-                throw new NullReferenceException("The polyline is null");
-            }
-            this.BasePoint = basePoint;
-            this.Polyline = p;
-        }
-
-        private Point2d GetRealPoint(Point2d p)
-        {
-            if (p == null)
-            {
-                throw new NullReferenceException("The point is null");
-            }
-            return new Point2d(p.X - BasePoint.X, p.Y - BasePoint.Y);
-        }
-        public Command Run()
-        {
-            Command c = new Command();
+            GCodeBase c = new GCodeBase();
             c.Position(GetRealPoint(Polyline.GetPoint2dAt(0)));
 
             c.RotationOn();
@@ -59,5 +44,7 @@ namespace GCodeTool
 
             return c;
         }
+
     }
+
 }

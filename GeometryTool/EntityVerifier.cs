@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortTool
+namespace GeometryTool
 {
     public abstract class EntityVerifier
     {
@@ -36,13 +36,15 @@ namespace SortTool
         /// <returns>Return true, if the geometry contains any other one.</returns>
         public abstract bool HasInside();
 
+
+
         protected bool IsPointInCircle(Point3d p, Circle c)
         {
             return (p.X - c.Center.X) * (p.X - c.Center.X) + (p.Y - c.Center.Y) * (p.Y - c.Center.Y)
                 <= (c.Radius * c.Radius);
         }
 
-        protected bool isPointInPolyline(Point3d pt, Polyline Ligne)
+        protected bool IsPointInPolyline(Point3d pt, Polyline Ligne)
         {
             if (Ligne == null)
             {
@@ -85,15 +87,15 @@ namespace SortTool
                 }
             }
             colpt[vn] = Ligne.GetPoint3dAt(0);
-            return wn_PnPoly(pt, colpt, vn) != 0;
+            return WP_PnPoly(pt, colpt, vn) != 0;
         }
 
-        private double isLeft(Point3d P0, Point3d P1, Point3d P2)
+        private double IsLeft(Point3d P0, Point3d P1, Point3d P2)
         {
             return ((P1.X - P0.X) * (P2.Y - P0.Y) - (P2.X - P0.X) * (P1.Y - P0.Y));
         }
 
-        private double wn_PnPoly(Point3d P, Point3d[] V, double n)
+        private double WP_PnPoly(Point3d P, Point3d[] V, double n)
         {
             double wn = 0;
             for (int i = 0; i < n; i++)
@@ -102,7 +104,7 @@ namespace SortTool
                 {
                     if (V[i + 1].Y > P.Y)
                     {
-                        if (isLeft(V[i], V[i + 1], P) > 0)
+                        if (IsLeft(V[i], V[i + 1], P) > 0)
                         {
                             wn = wn + 1;
                         }
@@ -112,7 +114,7 @@ namespace SortTool
                 {
                     if (V[i + 1].Y <= P.Y)
                     {
-                        if (isLeft(V[i], V[i + 1], P) < 0)
+                        if (IsLeft(V[i], V[i + 1], P) < 0)
                         {
                             wn = wn - 1;
                         }
@@ -120,6 +122,21 @@ namespace SortTool
                 }
             }
             return wn;
+        }
+
+        protected bool PolylineInPolyline()
+        {
+
+            Polyline p1 = (Polyline)E1;
+            Polyline p2 = (Polyline)E2;
+            return IsPointInPolyline(p1.GetPoint3dAt(0), p2);
+        }
+
+        protected bool PolylineInCircle()
+        {
+            Polyline p = (Polyline)E1;
+            Circle c = (Circle)E2;
+            return IsPointInCircle(p.GetPoint3dAt(0), c);
         }
 
     }

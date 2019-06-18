@@ -9,6 +9,5 @@ namespace GCodeTool
     public interface ITask
     {
 
-        Command Run();
     }
 }

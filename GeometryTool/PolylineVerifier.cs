@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autodesk.AutoCAD.DatabaseServices;
 
-namespace SortTool
+namespace GeometryTool
 {
     public class PolylineVerifier : EntityVerifier
     {
@@ -14,20 +14,7 @@ namespace SortTool
             
         }
 
-        private bool PolylineInPolyline() {
-
-            Polyline p1 = (Polyline)E1;
-            Polyline p2 = (Polyline)E2;
-            return isPointInPolyline(p1.GetPoint3dAt(0), p2);
-        }
-
-        private bool PolylineInCircle()
-        {
-            Polyline p = (Polyline)E1;
-            Circle c = (Circle)E2;
-            return IsPointInCircle(p.GetPoint3dAt(0), c);
-        }
-
+      
 
         public override bool HasInside()
         {
@@ -45,8 +32,7 @@ namespace SortTool
                 return PolylineInCircle();
             }
 
-            
-            throw new TypeAccessException("The Geometrie is not defined");
+            return false;
         }
     }
 }

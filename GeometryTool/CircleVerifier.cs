@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 
-namespace SortTool
+namespace GeometryTool
 {
     public class CircleVerifier : EntityVerifier
     {
@@ -42,7 +42,7 @@ namespace SortTool
         {
             Circle c = (Circle)E1;
             Polyline p = (Polyline)E2; 
-            return isPointInPolyline(PointOfCircle(c), p);
+            return IsPointInPolyline(PointOfCircle(c), p);
         }
 
 

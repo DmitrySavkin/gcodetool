@@ -10,9 +10,10 @@ namespace SortTool
     public class EntityInfo
     {
         private Entity entity;
+        private bool isOuter;
         private bool done;
 
-        public EntityInfo(Entity entity)
+        public EntityInfo(Entity entity, bool isOuter)
         {
             if (entity == null)
             {
@@ -21,19 +22,18 @@ namespace SortTool
 
             this.entity = entity;
             this.done = false;
+            this.isOuter = isOuter;
         }
 
         public bool Done
         {
             set
             {
-                Hatch h;
                 this.done = value;
             }
             get
             {
                 return this.done;
-
             }
         }
 
@@ -41,14 +41,19 @@ namespace SortTool
         {
             set
             {
-
                 this.entity = value;
-
             }
             get
             {
                 return this.entity;
+            }
+        }
 
+        public bool IsOuter
+        {
+            get
+            {
+                return this.isOuter;
             }
         }
     }

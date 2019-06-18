@@ -1,9 +1,9 @@
 ﻿using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
 
-namespace SortTool
+namespace GeometryTool
 {
-    internal class LineVerifier : EntityVerifier
+    public class LineVerifier : EntityVerifier
     {
 
         public LineVerifier(Entity e1, Entity e2) : base(e1, e2)
@@ -26,13 +26,22 @@ namespace SortTool
 
         }
 
-        private  Polyline ConvertToPolyline(Line l)
+        public static  Polyline ConvertToPolyline(Line l)
         {
             Polyline p = new Polyline();
             p.AddVertexAt(0, new Point2d(l.StartPoint.X, l.StartPoint.Y), 0, 0, 0);
             p.AddVertexAt(1, new Point2d(l.EndPoint.X, l.EndPoint.Y), 0, 0, 0);
             return p;
         }
+
+        public static Line ConvertToLine(Line2d l2d)
+        {
+            Line l = new Line(new Point3d(l2d.StartPoint.X, l2d.StartPoint.Y, 0), new Point3d(l2d.EndPoint.X, l2d.EndPoint.Y, 0));
+            return l;
+        }
+
+
+
         private bool LineInLine()
         {
             Line l1 = E1 as Line;

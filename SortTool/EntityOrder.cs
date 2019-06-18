@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GeometryTool;
 
 namespace SortTool
 {
@@ -20,13 +21,13 @@ namespace SortTool
         }
 
 
-        public static List<Entity> GetOrderedEntities(List<EntityInfo> allEntities)
+        public static List<EntityInfo> GetOrderedEntities(List<EntityInfo> allEntities)
         {
             if (allEntities == null)
                 throw new NullReferenceException("The list of entities  is null");
             if (allEntities.Count == 0)
                 return null;
-            List<Entity> resEntities = new List<Entity>();
+            List<EntityInfo> resEntities = new List<EntityInfo>();
             bool wasProcessed;
             do
             {
@@ -48,7 +49,7 @@ namespace SortTool
                     }
                     if (!hasInternals)
                     {
-                        resEntities.Add(curEntity.Entity);
+                        resEntities.Add(curEntity);
                         wasProcessed = true;
                         curEntity.Done = true;
                     }

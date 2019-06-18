@@ -6,17 +6,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GeometryTool;
+using SortTool;
 
-namespace VertexTool
+namespace EdgeTool
 {
 
-    public class Vertex
+    public class Edge
     {
-        public static short InnereColor = 4; 
+        public static short InnereColor = 4;
         public static short OutherColor = 2;
         public static string InnerVertexSt = "Innere Kanten";
         public static string OutherVertexSt = "Aussere Kanten";
-        // public enum PolygonSelectionMode { Crossing, Window }
+  
 
         /// <summary>
         /// Method  creates the list of inner entities
@@ -29,22 +31,15 @@ namespace VertexTool
             {
                 throw new NullReferenceException("The polylines is null");
             }
-
-            const string polyline = "Polyline";//Um  die Tippfehler beim switch zu vermeiden,
-                                               //würde  ich vorschlagen
-                                               //eine Variable einzuführen
-            const string circle = "Circle";
-            const string hatch = "Hatch";
-            int id = 0;
             List<Entity> innerEntities = new List<Entity>();
             foreach (Entity e in polylines)
             {
-               if (e.Layer.Equals(Vertex.InnerVertexSt))
+                if (e.Layer.Equals(Edge.InnerVertexSt))
                 {
                     innerEntities.Add(e);
                 }
             }
-           
+
             return innerEntities;
         }
         /// <summary>
@@ -89,23 +84,18 @@ namespace VertexTool
                 throw new NullReferenceException("The polylines is null");
             }
 
-            const string polyline = "Polyline";//Um  die Tippfehler beim switch zu vermeiden,
-                                               //würde  ich vorschlagen
-                                               //eine Variable einzuführen
-            const string circle = "Circle";
-            const string hatch = "Hatch";
-            int id = 0;
+  
             List<Entity> outerEntities = new List<Entity>();
             foreach (Entity e in polylines)
             {
-                if (e.Layer.Equals(Vertex.OutherVertexSt))
+                if (e.Layer.Equals(Edge.OutherVertexSt))
                 {
                     outerEntities.Add(e);
                 }
             }
-         
+
             return outerEntities;
         }
-      
+
     }
 }

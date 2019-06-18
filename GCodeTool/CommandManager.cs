@@ -1,5 +1,6 @@
 ﻿using Autodesk.AutoCAD.DatabaseServices;
 using Autodesk.AutoCAD.Geometry;
+using SortTool;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,14 @@ namespace GCodeTool
 {
    public class CommandManager
     {
-        public const double diam = 2.0;
+        public static double diam = 20.0;
 
-        private static Point2d getBasePoint(List<Entity> entities)
+        private static Point2d getBasePoint(List<EntityInfo> entities)
         {
             double minX = Double.MaxValue, minY = Double.MaxValue;
-            foreach (Entity e in entities)
+            foreach (EntityInfo e in entities)
             {
-                Polyline p = e as Polyline;
+                Polyline p = e.Entity as Polyline;
                 if (p != null)
                 {
                     for (int i = 0; i < p.NumberOfVertices; i++)
@@ -34,7 +35,7 @@ namespace GCodeTool
                     }
                 }
 
-                Circle c = e as Circle;
+                Circle c = e.Entity as Circle;
                 if (c != null)
                 {
                     if (c.Center.X - c.Radius < minX)
@@ -55,35 +56,38 @@ namespace GCodeTool
             return new Point2d(minX, minY);
         }
 
-        public static  string Gcode(List<Entity> entities)
+        public static  string Gcode(List<EntityInfo> entities)
         {
             string s = "";
-            ITask t = null;
+            Command gcode = null;
             Point2d basePoint = getBasePoint(entities);
-            foreach(Entity e in entities)
+            foreach(EntityInfo e in entities)
             {
-                Polyline p = e as Polyline;
+                gcode = null;
+                Polyline p = e.Entity as Polyline;
                 if (p!= null)
                 {
-                    t = new PolylineCommand(basePoint, p);
+                    gcode = new PolylineCommand(basePoint, e);
                 }
 
-                Circle c = e as Circle;
+                Circle c = e.Entity as Circle;
                 if (c != null)
                 {
-                    t = new CircleCommand(basePoint, c);   
+                    gcode = new CircleCommand(basePoint, e);   
                 }
 
-                Line l = e as Line;
+                Line l = e.Entity as Line;
                 if (l != null)
                 {
                     Polyline p1 = ConvertToPolyline(l);
-                    t = new PolylineCommand(basePoint, p1);
+                    gcode = new PolylineCommand(basePoint, e);
                 }
-                if (t != null)
+                if (gcode != null)
                 {
-                    s += t.Run().ToString();
+                    s += gcode.Run().ToString();
                 }
+
+
             }
             return s;
         }
