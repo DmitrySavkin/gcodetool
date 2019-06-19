@@ -79,25 +79,18 @@ namespace GCodeTool
                 Line l = e.Entity as Line;
                 if (l != null)
                 {
-                    Polyline p1 = ConvertToPolyline(l);
-                    gcode = new PolylineCommand(basePoint, e);
+                    gcode = new LineCommand(basePoint, e);
                 }
-                if (gcode != null)
+                if (gcode != null && LineCommand.Line.Count > 2)
                 {
                     s += gcode.Run().ToString();
+                    gcode = null;
                 }
 
 
             }
             return s;
         }
-        //Dublicate Error
-        public static Polyline ConvertToPolyline(Line l)
-        {
-            Polyline p = new Polyline();
-            p.AddVertexAt(0, new Point2d(l.StartPoint.X, l.StartPoint.Y), 0, 0, 0);
-            p.AddVertexAt(1, new Point2d(l.EndPoint.X, l.EndPoint.Y), 0, 0, 0);
-            return p;
-        }
+    
     }
 }

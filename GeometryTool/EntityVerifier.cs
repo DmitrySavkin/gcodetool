@@ -10,23 +10,17 @@ namespace GeometryTool
 {
     public abstract class EntityVerifier
     {
-        public Entity E1 { get; }
+ 
         public Entity E2 { get; }
 
-        public EntityVerifier(Entity e1, Entity e2)
+        public EntityVerifier( Entity e2)
         {
-            if (e1 == null)
-            {
-                throw new NullReferenceException("The entity e1 is null");
-
-            }
+            
 
             if (e2 == null)
             {
                 throw new NullReferenceException("The entity e2 is null");
             }
-
-            this.E1 = e1;
             this.E2 = e2;
         }
 
@@ -124,20 +118,6 @@ namespace GeometryTool
             return wn;
         }
 
-        protected bool PolylineInPolyline()
-        {
-
-            Polyline p1 = (Polyline)E1;
-            Polyline p2 = (Polyline)E2;
-            return IsPointInPolyline(p1.GetPoint3dAt(0), p2);
-        }
-
-        protected bool PolylineInCircle()
-        {
-            Polyline p = (Polyline)E1;
-            Circle c = (Circle)E2;
-            return IsPointInCircle(p.GetPoint3dAt(0), c);
-        }
-
+    
     }
 }

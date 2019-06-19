@@ -9,9 +9,23 @@ namespace GeometryTool
 {
     public class PolylineVerifier : EntityVerifier
     {
-        public PolylineVerifier(Entity e1, Entity e2) : base(e1, e2)
+        private Polyline polyline;
+
+        public Polyline Polyline
         {
-            
+            get
+            {
+                return this.polyline;
+            }
+        }
+        public PolylineVerifier(Polyline p, Entity e2) : base( e2)
+        {
+            if (p == null)
+            {
+                throw new NullReferenceException("The polyline is null");
+            }
+
+            this.polyline = p;
         }
 
       
@@ -20,19 +34,28 @@ namespace GeometryTool
         {
             var p2 = E2 as Polyline;
             var c2 = E2 as Circle;
-            var l2 = E2 as Line;
+          
             if (p2 != null) {
-            //if (E2.GetType().Name == "Polyline")
-            //{
                 return PolylineInPolyline();
             }
             if (c2 != null) {
-            //if (E2.GetType().Name == "Circle")
-            //{
                 return PolylineInCircle();
             }
 
             return false;
         }
+
+        protected bool PolylineInPolyline()
+        {
+            Polyline p2 = (Polyline)E2;
+            return IsPointInPolyline(this.polyline.GetPoint3dAt(0), p2);
+        }
+
+        protected bool PolylineInCircle()
+        {
+            Circle c = (Circle)E2;
+            return IsPointInCircle(this.polyline.GetPoint3dAt(0), c);
+        }
+
     }
 }

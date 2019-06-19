@@ -88,6 +88,7 @@ namespace AutoCADTool
                 List<EntityInfo> allEntities = new List<EntityInfo>();
                 using (Transaction t = db.TransactionManager.StartTransaction())
                 {
+                    
                     PromptSelectionResult sPrompt = ed.SelectImplied();
                     if (sPrompt.Status != PromptStatus.OK)
                     {
@@ -121,6 +122,7 @@ namespace AutoCADTool
                                         }
                                         var ent = t.GetObject(((ObjectId)objID), OpenMode.ForWrite) as Entity;
                                         var entInfo = new EntityInfo(ent, isOuter);
+                                    
                                         allEntities.Add(entInfo);
                                     }
                                 }
@@ -132,6 +134,7 @@ namespace AutoCADTool
                 }
                 List<EntityInfo> sortedEntities = EntityOrder.GetOrderedEntities(allEntities);
                 string code = CommandManager.Gcode(sortedEntities);
+             
                 Form1 f = new Form1();
                 f.SetTextGCode(code);
                 f.Show();

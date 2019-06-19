@@ -15,20 +15,20 @@ namespace GeometryTool
             var p = e1 as Polyline;
             if (p != null)
             {
-                return new PolylineVerifier(e1, e2);
+                return new PolylineVerifier(p, e2);
             }                  
             var c = e1 as Circle;
             if (c != null)
             {
-                return new CircleVerifier(e1, e2);
+                return new CircleVerifier(c, e2);
             }
-            /*
+            
                         var l = e1 as Line;
                         if (l != null)
                         {
-                            return new LineVerifier(e1, e2);
+                            return new LineVerifier(l, e2);
                         }
-                        */
+                     
             //    throw new NullReferenceException("The sort is null");
             return null;
         }

@@ -11,7 +11,8 @@ namespace GCodeTool
 
         
         private bool isOuter;
-        private Point2d basePoint;
+        internal Point2d basePoint;
+
 
         public Command(Point2d basePoint, EntityInfo e)
         {
@@ -22,6 +23,11 @@ namespace GCodeTool
         //    this.Polyline = new Offset().getBias(p, EdgeTool.Edge.IsOuter(p));
         }
 
+        protected Command(Point2d basePoint, bool isOuter)
+        {
+            this.basePoint = basePoint; 
+            this.isOuter = isOuter;
+        }
 
         public Point2d GetRealPoint(Point2d p)
         {

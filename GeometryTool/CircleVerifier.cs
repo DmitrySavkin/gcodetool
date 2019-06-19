@@ -10,9 +10,25 @@ namespace GeometryTool
 {
     public class CircleVerifier : EntityVerifier
     {
-        public CircleVerifier(Entity e1, Entity e2) : base(e1, e2)
+        private Circle circle;
+
+        public Circle Circle
         {
+            get
+            {
+                return circle;
+            }
         }
+        public CircleVerifier(Circle c, Entity e2) : base( e2)
+        {
+            if (c == null)
+            {
+                throw new NullReferenceException("The circle is null");
+            }
+            this.circle = c;
+
+        }
+
 
         public override bool HasInside()
         {
@@ -33,16 +49,15 @@ namespace GeometryTool
 
         private bool CircleInCircle()
         {
-            Circle c1 = (Circle)E1;
+            
             Circle c2 = (Circle)E2;
-            return IsPointInCircle(PointOfCircle(c1), c2);
+            return IsPointInCircle(PointOfCircle(circle), c2);
         }
 
         private bool CircleInPolyline()
         {
-            Circle c = (Circle)E1;
             Polyline p = (Polyline)E2; 
-            return IsPointInPolyline(PointOfCircle(c), p);
+            return IsPointInPolyline(PointOfCircle(circle), p);
         }
 
 

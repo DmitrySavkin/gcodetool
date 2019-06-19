@@ -24,6 +24,14 @@ namespace GCodeTool
             }
         }
 
+        public PolylineCommand(Point2d basePoint, Entity e, bool isOuther): base(basePoint, isOuther)
+        {
+            Polyline p = e as Polyline;
+            if (p != null)
+            {
+                this.Polyline = new Offset().getBias(p, base.IsOuter);
+            }
+        }
    
 
         public override GCodeBase Run()
