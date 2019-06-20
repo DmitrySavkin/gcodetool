@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcCommand.cs" />
     <Compile Include="CircleCommand.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandManager.cs" />

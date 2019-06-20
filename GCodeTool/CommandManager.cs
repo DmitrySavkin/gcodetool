@@ -76,6 +76,11 @@ namespace GCodeTool
                     gcode = new CircleCommand(basePoint, e);   
                 }
 
+                Arc a = e.Entity as Arc;
+                if (a != null)
+                {
+                    gcode = new ArcCommand(basePoint, e);
+                }
                 Line l = e.Entity as Line;
                 if (l != null)
                 {

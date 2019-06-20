@@ -63,6 +63,12 @@ namespace GCodeTool
             RotationOff();
         }
 
+        public void MoveArc(Point2d finalPoint, double radius)
+        {
+            string s = String.Format("G02 X{0} Y{1} I{2} J{3}", finalPoint.X, finalPoint.Y, -radius, radius);
+            GCode.AppendLine(s);
+
+        }
 
 
         public void RotationOn()
