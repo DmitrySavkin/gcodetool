@@ -13,10 +13,10 @@ namespace GCodeTool
     {
         public static double diam = 20.0;
 
-        private static Point2d getBasePoint(List<EntityInfo> entities)
+        private static Point2d getBasePoint(List<CurveInfo> entities)
         {
             double minX = Double.MaxValue, minY = Double.MaxValue;
-            foreach (EntityInfo e in entities)
+            foreach (CurveInfo e in entities)
             {
                 Polyline p = e.Entity as Polyline;
                 if (p != null)
@@ -56,12 +56,13 @@ namespace GCodeTool
             return new Point2d(minX, minY);
         }
 
-        public static  string Gcode(List<EntityInfo> entities)
+        public static  string Gcode(List<CurveInfo> entities)
         {
             string s = "";
             Command gcode = null;
+        
             Point2d basePoint = getBasePoint(entities);
-            foreach(EntityInfo e in entities)
+            foreach(CurveInfo e in entities)
             {
                 gcode = null;
                 Polyline p = e.Entity as Polyline;
@@ -75,27 +76,26 @@ namespace GCodeTool
                 {
                     gcode = new CircleCommand(basePoint, e);   
                 }
-
+                //Don't work
                 Arc a = e.Entity as Arc;
                 if (a != null)
                 {
-                    gcode = new ArcCommand(basePoint, e);
+                  //  gcode = new ArcCommand(basePoint, e);
                 }
-                Line l = e.Entity as Line;
+              /*  Line l = e.Entity as Line;
                 if (l != null)
                 {
                     gcode = new LineCommand(basePoint, e);
-                }
-                if (gcode != null && LineCommand.Line.Count > 2)
+                }*/
+                if (gcode != null /*&& LineCommand.Line.Count > 2*/)
                 {
                     s += gcode.Run().ToString();
-                    gcode = null;
                 }
-
+               
 
             }
             return s;
         }
-    
+
     }
 }

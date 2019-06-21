@@ -12,7 +12,7 @@ namespace GCodeTool
     public class ArcCommand : Command
     {
         private Arc arc;
-        public ArcCommand(Point2d basePoint, EntityInfo e) : base(basePoint, e)
+        public ArcCommand(Point2d basePoint, CurveInfo e) : base(basePoint, e)
         {
             Arc a = e.Entity as Arc;
             if (a == null)
@@ -36,16 +36,14 @@ namespace GCodeTool
             /*  Polyline p1 = ConvertToPolyline();
               return new PolylineCommand(this.basePoint, p1, IsOuter).Run();
               */
-
+            
             GCodeBase c = new GCodeBase();
-            c.RotationOn();
-            c.Down();
-            c.CoolingOn();
-            Point2d p = new Point2d(arc.EndPoint.X, arc.EndPoint.Y);
-            c.MoveArc(p, arc.Radius);
-            c.Up();
-            c.RotationOff();
-            c.CoolingOff();
+            Point2d end = new Point2d(arc.EndPoint.X, arc.EndPoint.Y);
+            double eX = arc.EndPoint.X;
+            double eY = arc.EndPoint.Y;
+            double sX = arc.StartPoint.X;
+            double sY = arc.StartPoint.Y;
+            c.MoveArc(end, arc.Radius);
             return c;
         }
 
@@ -55,6 +53,7 @@ namespace GCodeTool
             p.AddVertexAt(0, new Point2d(arc.StartPoint.X, arc.StartPoint.Y), GetArcBulge(arc), 0, 0);
             p.AddVertexAt(1, new Point2d(arc.EndPoint.X, arc.EndPoint.Y), 0, 0, 0);
             p.LayerId = arc.LayerId;
+            
             return p;
         }
 

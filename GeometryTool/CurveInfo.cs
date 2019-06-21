@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace SortTool
 {
-    public class EntityInfo
+    public class CurveInfo
     {
-        private Entity entity;
+        private Curve entity;
         private bool isOuter;
         private bool done;
 
-        public EntityInfo(Entity entity, bool isOuter)
+        public CurveInfo(Curve entity, bool isOuter)
         {
             if (entity == null)
             {
@@ -37,7 +37,7 @@ namespace SortTool
             }
         }
 
-        public Entity Entity
+        public Curve Entity
         {
             set
             {

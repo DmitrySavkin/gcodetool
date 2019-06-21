@@ -8,20 +8,20 @@ using System;
 using System.Collections.Generic;
 using SortTool;
 using GCodeTool;
-
+using System.Reflection;
 
 namespace AutoCADTool
 {
 
     public class CommandClass : IExtensionApplication
-    {        
+    {
+        Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+        Document autoCadDoc = Application.DocumentManager.MdiActiveDocument;
         public void ListLayers()
         {
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
+           
             try
             {
-                Document autoCadDoc = Application.DocumentManager.MdiActiveDocument;
-
                 if (autoCadDoc == null)
                 {
                     throw new NullReferenceException("Autocad can not be called");
@@ -73,19 +73,16 @@ namespace AutoCADTool
         [CommandMethod("GetPolyline")]
         public void GetsPolyLine()
         {
-
-            Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
             try
             {
-                Document autoCadDoc = Application.DocumentManager.MdiActiveDocument;
-
+              
                 if (autoCadDoc == null)
                 {
                     throw new NullReferenceException("Autocad can not be called");
                 }
 
                 Database db = autoCadDoc.Database;
-                List<EntityInfo> allEntities = new List<EntityInfo>();
+                List<CurveInfo> allEntities = new List<CurveInfo>();
                 using (Transaction t = db.TransactionManager.StartTransaction())
                 {
                     
@@ -120,24 +117,23 @@ namespace AutoCADTool
                                         {
                                             continue;
                                         }
-                                        var ent = t.GetObject(((ObjectId)objID), OpenMode.ForWrite) as Entity;
-                                        var entInfo = new EntityInfo(ent, isOuter);
-                                    
+                                        var ent = t.GetObject(((ObjectId)objID), OpenMode.ForWrite) as Curve;
+                                        var entInfo = new CurveInfo(ent, isOuter);
                                         allEntities.Add(entInfo);
                                     }
                                 }
                             }
                         }
                     }
-                    
                     t.Commit();
                 }
-                List<EntityInfo> sortedEntities = EntityOrder.GetOrderedEntities(allEntities);
+                List<CurveInfo> sortedEntities = EntityOrder.GetOrderedEntities(allEntities);
                 string code = CommandManager.Gcode(sortedEntities);
              
                 Form1 f = new Form1();
                 f.SetTextGCode(code);
                 f.Show();
+                code = "";
             }
             catch (System.Exception ex)
             {
@@ -149,7 +145,6 @@ namespace AutoCADTool
         public void Initialize()
         {
             ListLayers();
-          
 
         }
 
@@ -159,5 +154,6 @@ namespace AutoCADTool
         }
 
 
+       
     }
 }

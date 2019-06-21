@@ -14,7 +14,7 @@ namespace GCodeTool
         internal Point2d basePoint;
 
 
-        public Command(Point2d basePoint, EntityInfo e)
+        public Command(Point2d basePoint, CurveInfo e)
         {
            
             this.isOuter = e.IsOuter;

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Programmierprojekt", "Programmierprojekt\Programmierprojekt.csproj", "{D497A24A-3C9B-49E7-B172-E991A2967B82}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCADTool", "AutoCADTool\AutoCADTool.csproj", "{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoCADBibTestCode", "AutoCADBibTestCode\AutoCADBibTestCode.csproj", "{44FF2F8D-23A3-46DF-A45F-0CB0F8141701}"
@@ -23,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D497A24A-3C9B-49E7-B172-E991A2967B82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D497A24A-3C9B-49E7-B172-E991A2967B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D497A24A-3C9B-49E7-B172-E991A2967B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D497A24A-3C9B-49E7-B172-E991A2967B82}.Release|Any CPU.Build.0 = Release|Any CPU
 		{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34B2A4C0-4B18-440F-A0FA-DAC893A73AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU

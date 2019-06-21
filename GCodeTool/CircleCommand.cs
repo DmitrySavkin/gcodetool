@@ -14,7 +14,7 @@ namespace GCodeTool
         public Circle Circle { get; }
 
 
-        public CircleCommand(Point2d basePoint, EntityInfo e) : base(basePoint,e ) 
+        public CircleCommand(Point2d basePoint, CurveInfo e) : base(basePoint,e ) 
         {
 
 

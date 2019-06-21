@@ -15,7 +15,7 @@ namespace GCodeTool
 
 
 
-        public PolylineCommand(Point2d basePoint, EntityInfo e): base(basePoint, e)
+        public PolylineCommand(Point2d basePoint, CurveInfo e): base(basePoint, e)
         {
             Polyline p = e.Entity as Polyline;
             if (p != null)

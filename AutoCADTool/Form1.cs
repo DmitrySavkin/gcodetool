@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -50,5 +51,56 @@ namespace AutoCADTool
             GCodeFrame.Text = str;
         }
 
+        private void DomainUpDown1_SelectedItemChanged(object sender, EventArgs e)
+        {
+       
+
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DomainUpDown1_SelectedItemChanged_1(object sender, EventArgs e)
+        {
+           
+        }
+        private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            decimal z = this.zCoordinate.Value;
+            string pattern = @"S[0-9]{3,4}";
+            Regex r = new Regex(pattern);
+            string cpy = GCodeFrame.Text;
+            string nd = r.Replace(cpy, "S" + z);
+            GCodeFrame.Text = nd;
+            //   MessageBox.Show(nd);
+        }
+
+        private void Diameter_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ZCoordinate_ValueChanged(object sender, EventArgs e)
+        {
+             decimal z = this.zCoordinate.Value;
+             string pattern = @"Z[0-9]{1,2}";
+             Regex r = new Regex(pattern);
+             string cpy = GCodeFrame.Text;
+             string nd = r.Replace(cpy, "Z" + z);
+             GCodeFrame.Text = nd;
+             pattern = @"Z-[0-9]{1,2}";
+             r = new Regex(pattern);
+             cpy = GCodeFrame.Text;
+             nd = r.Replace(cpy, "Z-" + z);
+             GCodeFrame.Text = nd;
+         //   MessageBox.Show(nd);
+        }
     }
 }

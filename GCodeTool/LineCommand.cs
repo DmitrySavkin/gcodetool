@@ -13,7 +13,7 @@ namespace GCodeTool
     {
         private Line line;
         private static List<Line> lines = new List<Line>();
-        public LineCommand(Point2d basePoint, EntityInfo e) : base(basePoint, e)
+        public LineCommand(Point2d basePoint, CurveInfo e) : base(basePoint, e)
         {
             Line l = e.Entity as Line;
             if (l != null)
