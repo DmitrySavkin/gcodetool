@@ -80,14 +80,14 @@ namespace GCodeTool
                 Arc a = e.Entity as Arc;
                 if (a != null)
                 {
-                   gcode = new ArcCommand(basePoint, e);
+              //     gcode = new ArcCommand(basePoint, e);
                 }
                Line l = e.Entity as Line;
                 if (l != null)
                 {
-                    gcode = new LineCommand(basePoint, e);
+                 //   gcode = new LineCommand(basePoint, e);
                 }
-                if (gcode != null && LineCommand.Line.Count > 2)
+                if (gcode != null /*&& LineCommand.Line.Count > 2*/)
                 {
                     s += gcode.Run().ToString();
                 }
