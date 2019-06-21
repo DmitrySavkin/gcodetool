@@ -67,39 +67,12 @@ namespace SortTool
                    }
 
                }*/
-            Filter(resEntities);
+           // Dublicate.Filter(resEntities);
+            //Dublicate.RemoveDublicateCircle(resEntities);
             return resEntities;
         }
 
 
-        private static void Filter(List<CurveInfo> entities)
-        {
-            for (int i = 0; i < entities.Count; i++)
-            {
-                for (int j = 0; j < entities.Count; j++)
-                {
-                    if (entities[i].Entity.StartPoint == entities[j].Entity.StartPoint &&
-                       entities[i].Entity != entities[j].Entity)
-                    {
-                        Line l = entities[i].Entity as Line;
-                        Arc a = entities[j].Entity as Arc;
-                        if (l != null && a != null)
-                        {
-                            entities.RemoveAt(i);
-                            continue;
-                        }
-                        l = entities[j].Entity as Line;
-                        a = entities[i].Entity as Arc;
-                        if (l != null & a != null)
-                        {
-                            entities.RemoveAt(j);
-                            continue;
-                        }
-                    }
-                }
-
-            }
-        }
 
     }
 }

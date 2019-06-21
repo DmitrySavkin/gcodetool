@@ -76,9 +76,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(648, 139);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.Size = new System.Drawing.Size(124, 13);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Durchmesser";
+            this.label1.Text = "Durchmesser(Werkzeug)";
             this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // label2
@@ -105,6 +105,11 @@
             this.zCoordinate.Name = "zCoordinate";
             this.zCoordinate.Size = new System.Drawing.Size(101, 20);
             this.zCoordinate.TabIndex = 7;
+            this.zCoordinate.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.zCoordinate.ValueChanged += new System.EventHandler(this.ZCoordinate_ValueChanged);
             // 
             // speeValue
