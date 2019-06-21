@@ -70,7 +70,7 @@ namespace AutoCADTool
         }
 
 
-        [CommandMethod("GetPolyline")]
+        [CommandMethod("GCode")]
         public void GetsPolyLine()
         {
             try

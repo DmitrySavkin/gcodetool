@@ -39,11 +39,10 @@ namespace GCodeTool
             
             GCodeBase c = new GCodeBase();
             Point2d end = new Point2d(arc.EndPoint.X, arc.EndPoint.Y);
-            double eX = arc.EndPoint.X;
-            double eY = arc.EndPoint.Y;
-            double sX = arc.StartPoint.X;
-            double sY = arc.StartPoint.Y;
-            c.MoveArc(end, arc.Radius);
+            Point2d start = new Point2d(arc.StartPoint.X, arc.StartPoint.Y);
+            Point2d center = new Point2d(arc.EndPoint.X, arc.StartPoint.Y);
+            double dist = Math.Sqrt(Math.Pow(center.X - end.X, 2) + Math.Pow(center.Y - end.Y, 2));
+            c.MoveArc(start,end, dist);
             return c;
         }
 

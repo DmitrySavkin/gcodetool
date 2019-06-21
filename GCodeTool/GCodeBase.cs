@@ -9,6 +9,7 @@ namespace GCodeTool
 {
    public class GCodeBase
     {
+        private static bool up = true;
 
         private StringBuilder GCode { get; }
 
@@ -19,13 +20,21 @@ namespace GCodeTool
         public void Up()
         {
             //Problem
-            GCode.AppendLine("G1 Z10");
+            if (!up)
+            {
+                GCode.AppendLine("G1 Z10");
+                up = true;
+            }
         }
 
         public void Down()
         {
             //Problem
-            GCode.AppendLine("G1 Z-10");
+            if (up)
+            {
+                GCode.AppendLine("G1 Z-10");
+                up = false;
+            }
         }
 
 
@@ -63,21 +72,21 @@ namespace GCodeTool
             RotationOff();
         }
 
-        public void MoveArc(Point2d endPoint, double radius, CommandOption option = CommandOption.ClockWise)
+        public void MoveArc(Point2d startPoint, Point2d endPoint, double radius, CommandOption option = CommandOption.ClockWise)
         {
-            //Position(new Point2d(center.X + radius, center.Y));
+            Position(new Point2d(startPoint.X, startPoint.Y));
             RotationOn();
             Down();
             CoolingOn();
             string s = "";
             if ( option == CommandOption.ClockWise)
             {
-                s = String.Format("G02 X{0} Y{1} I{2} J{3}", endPoint.X, endPoint.Y, -radius, 0);
+                s = String.Format("G02 X{0} Y{1} R{2} ", endPoint.X, endPoint.Y, radius);
 
             }
             else
             {
-               s = String.Format("G03 X{0} Y{1} I{2} J{3}", endPoint.X, endPoint.Y, -radius, 0);
+               s = String.Format("G03 X{0} Y{1} R{2}", endPoint.X, endPoint.Y, radius);
 
             }
             GCode.AppendLine(s);
