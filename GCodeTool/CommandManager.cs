@@ -11,6 +11,7 @@ namespace GCodeTool
 {
    public class CommandManager
     {
+        public static readonly double DefaultDiam = 5.0;
         private static Point2d getBasePoint(List<CurveInfo> entities)
         {
             double minX = Double.MaxValue, minY = Double.MaxValue;
@@ -56,7 +57,7 @@ namespace GCodeTool
 
         public static string Gcode(List<CurveInfo> entities)
         {
-            return Gcode(entities, 0);
+            return Gcode(entities, DefaultDiam);
         }
         public static  string Gcode(List<CurveInfo> entities, double diam)
         {

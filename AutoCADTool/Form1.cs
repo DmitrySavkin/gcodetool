@@ -25,6 +25,7 @@ namespace AutoCADTool
   
             InitializeComponent();
             SetTextGCode();
+            this.diameter.Value = Convert.ToDecimal(CommandManager.DefaultDiam);
         }
 
         private void Button1_Click(object sender, EventArgs e)
