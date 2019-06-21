@@ -15,9 +15,9 @@ namespace GCodeTool
         private bool isOuther;
         private double diameter;
 
-        public Polyline getBias(Polyline polyline, bool isOuter)
+        public Polyline getBias(Polyline polyline, bool isOuter, double diameter)
         {
-            this.diameter = CommandManager.diam;
+            this.diameter = diameter;
             var polylineCpy = new Polyline();
             for (int i = 0; i < polyline.NumberOfVertices - 1; i++)
             {

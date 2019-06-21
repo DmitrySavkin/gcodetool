@@ -12,7 +12,7 @@ namespace GCodeTool
     public class ArcCommand : Command
     {
         private Arc arc;
-        public ArcCommand(Point2d basePoint, CurveInfo e) : base(basePoint, e)
+        public ArcCommand(Point2d basePoint, CurveInfo e, double diam) : base(basePoint, e, diam)
         {
             Arc a = e.Entity as Arc;
             if (a == null)
@@ -22,7 +22,7 @@ namespace GCodeTool
             this.arc = a;
         }
 
-        public ArcCommand(Point2d basePoint, Entity e, bool isOuther) : base(basePoint, isOuther)
+        public ArcCommand(Point2d basePoint, Entity e, bool isOuther, double diam) : base(basePoint, isOuther, diam)
         {
             Arc a = e as Arc;
             if (a == null)

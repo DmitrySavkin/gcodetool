@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GCodeTool;
+using SortTool;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +16,15 @@ namespace AutoCADTool
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private string code;
+        private List<CurveInfo> sortedEntities;
+        public Form1(List<CurveInfo>  entities, string code)
         {
+            this.sortedEntities = entities;
+            this.code = code;
+  
             InitializeComponent();
+            SetTextGCode();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -46,9 +54,9 @@ namespace AutoCADTool
 
         }
 
-        public void SetTextGCode(string str)
+        public void SetTextGCode()
         {
-            GCodeFrame.Text = str;
+            GCodeFrame.Text = code;
         }
 
         private void DomainUpDown1_SelectedItemChanged(object sender, EventArgs e)
@@ -84,7 +92,10 @@ namespace AutoCADTool
 
         private void Diameter_ValueChanged(object sender, EventArgs e)
         {
+            double durchmesser = Convert.ToDouble(this.diameter.Value);
             
+            this.code =   CommandManager.Gcode(sortedEntities, durchmesser);
+            SetTextGCode();
         }
 
         private void ZCoordinate_ValueChanged(object sender, EventArgs e)

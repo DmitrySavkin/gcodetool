@@ -14,7 +14,7 @@ namespace GCodeTool
         public Circle Circle { get; }
 
 
-        public CircleCommand(Point2d basePoint, CurveInfo e) : base(basePoint,e ) 
+        public CircleCommand(Point2d basePoint, CurveInfo e,double diam) : base(basePoint,e, diam ) 
         {
 
 
@@ -35,7 +35,7 @@ namespace GCodeTool
                 throw new ArgumentException("The radius is less  than 0");
             }
 
-            double d = CommandManager.diam;
+            double d = DiameterOffset;
             if (!EdgeTool.Edge.IsOuter(Circle))
             {
                 d = -d;

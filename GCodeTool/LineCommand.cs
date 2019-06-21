@@ -13,7 +13,7 @@ namespace GCodeTool
     {
         private Line line;
         private static List<Line> lines = new List<Line>();
-        public LineCommand(Point2d basePoint, CurveInfo e) : base(basePoint, e)
+        public LineCommand(Point2d basePoint, CurveInfo e, double diam) : base(basePoint, e, diam)
         {
             Line l = e.Entity as Line;
             if (l != null)
@@ -35,7 +35,7 @@ namespace GCodeTool
         public override GCodeBase Run()
         {
             Polyline p1 = ConvertToPolyline();
-            return new PolylineCommand(this.basePoint, p1, IsOuter).Run();
+            return new PolylineCommand(this.basePoint, p1, IsOuter, DiameterOffset).Run();
         }
 
         

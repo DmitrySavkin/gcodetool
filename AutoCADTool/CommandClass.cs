@@ -13,7 +13,7 @@ using System.Reflection;
 namespace AutoCADTool
 {
 
-    public class CommandClass : IExtensionApplication
+    public class CommandClass
     {
         Editor ed = Application.DocumentManager.MdiActiveDocument.Editor;
         Document autoCadDoc = Application.DocumentManager.MdiActiveDocument;
@@ -130,8 +130,8 @@ namespace AutoCADTool
                 List<CurveInfo> sortedEntities = EntityOrder.GetOrderedEntities(allEntities);
                 string code = CommandManager.Gcode(sortedEntities);
              
-                Form1 f = new Form1();
-                f.SetTextGCode(code);
+                Form1 f = new Form1(sortedEntities, code);
+              
                 f.Show();
                 code = "";
             }
@@ -142,17 +142,7 @@ namespace AutoCADTool
 
         }
 
-        public void Initialize()
-        {
-            ListLayers();
-
-        }
-
-        public void Terminate()
-        {
-            
-        }
-
+       
 
        
     }

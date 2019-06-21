@@ -15,21 +15,21 @@ namespace GCodeTool
 
 
 
-        public PolylineCommand(Point2d basePoint, CurveInfo e): base(basePoint, e)
+        public PolylineCommand(Point2d basePoint, CurveInfo e, double diam): base(basePoint, e,diam)
         {
             Polyline p = e.Entity as Polyline;
             if (p != null)
             {
-                this.Polyline = new Offset().getBias(p, base.IsOuter);
+                this.Polyline = new Offset().getBias(p, base.IsOuter, DiameterOffset);
             }
         }
 
-        public PolylineCommand(Point2d basePoint, Entity e, bool isOuther): base(basePoint, isOuther)
+        public PolylineCommand(Point2d basePoint, Entity e, bool isOuther, double diam): base(basePoint, isOuther, diam)
         {
             Polyline p = e as Polyline;
             if (p != null)
             {
-                this.Polyline = new Offset().getBias(p, base.IsOuter);
+                this.Polyline = new Offset().getBias(p, base.IsOuter, DiameterOffset);
             }
         }
    

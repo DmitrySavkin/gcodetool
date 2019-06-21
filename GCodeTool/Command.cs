@@ -6,27 +6,31 @@ using Autodesk.AutoCAD.DatabaseServices;
 
 namespace GCodeTool
 {
-    public abstract class Command 
+    public abstract class Command
     {
 
-        
+
         private bool isOuter;
         internal Point2d basePoint;
+        private double diamOffset;
 
 
-        public Command(Point2d basePoint, CurveInfo e)
+        public Command(Point2d basePoint, CurveInfo e, double diamOffset)
         {
-           
+
             this.isOuter = e.IsOuter;
             this.basePoint = basePoint;
             //this.Polyline = p;
-        //    this.Polyline = new Offset().getBias(p, EdgeTool.Edge.IsOuter(p));
+            this.diamOffset = diamOffset;
+            //    this.Polyline = new Offset().getBias(p, EdgeTool.Edge.IsOuter(p));
         }
 
-        protected Command(Point2d basePoint, bool isOuter)
+        protected Command(Point2d basePoint, bool isOuter, double diamOffset)
         {
-            this.basePoint = basePoint; 
+            this.basePoint = basePoint;
             this.isOuter = isOuter;
+            this.diamOffset = diamOffset;
+
         }
 
         public Point2d GetRealPoint(Point2d p)
@@ -54,8 +58,16 @@ namespace GCodeTool
             }
         }
         public abstract GCodeBase Run();
-    }
 
+
+        public double DiameterOffset
+        {
+            get
+            {
+                return diamOffset;
+            }
+        }
+    }
     public enum CommandOption
     {
          ClockWise = 0,

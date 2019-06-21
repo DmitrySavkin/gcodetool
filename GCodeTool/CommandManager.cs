@@ -11,8 +11,6 @@ namespace GCodeTool
 {
    public class CommandManager
     {
-        public static double diam = 20.0;
-
         private static Point2d getBasePoint(List<CurveInfo> entities)
         {
             double minX = Double.MaxValue, minY = Double.MaxValue;
@@ -56,7 +54,11 @@ namespace GCodeTool
             return new Point2d(minX, minY);
         }
 
-        public static  string Gcode(List<CurveInfo> entities)
+        public static string Gcode(List<CurveInfo> entities)
+        {
+            return Gcode(entities, 0);
+        }
+        public static  string Gcode(List<CurveInfo> entities, double diam)
         {
             string s = "";
             Command gcode = null;
@@ -68,13 +70,13 @@ namespace GCodeTool
                 Polyline p = e.Entity as Polyline;
                 if (p!= null)
                 {
-                    gcode = new PolylineCommand(basePoint, e);
+                    gcode = new PolylineCommand(basePoint, e, diam);
                 }
 
                 Circle c = e.Entity as Circle;
                 if (c != null)
                 {
-                    gcode = new CircleCommand(basePoint, e);   
+                    gcode = new CircleCommand(basePoint, e, diam);   
                 }
                 //Don't work
                 Arc a = e.Entity as Arc;
@@ -97,5 +99,6 @@ namespace GCodeTool
             return s;
         }
 
+        
     }
 }
