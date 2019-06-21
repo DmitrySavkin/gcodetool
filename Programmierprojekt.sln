@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GCodeTool", "GCodeTool\GCod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryTool", "GeometryTool\GeometryTool.csproj", "{415BCBC5-96A1-4EB4-AFE9-7BD024B9DDDD}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetUpInstaller", "SetUpInstaller\SetUpInstaller.vdproj", "{1C4D9A70-F3E3-4613-92F7-E0066160BCB1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,8 +39,6 @@ Global
 		{415BCBC5-96A1-4EB4-AFE9-7BD024B9DDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{415BCBC5-96A1-4EB4-AFE9-7BD024B9DDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{415BCBC5-96A1-4EB4-AFE9-7BD024B9DDDD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C4D9A70-F3E3-4613-92F7-E0066160BCB1}.Debug|Any CPU.ActiveCfg = Debug
-		{1C4D9A70-F3E3-4613-92F7-E0066160BCB1}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

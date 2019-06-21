@@ -1,26 +1,18 @@
-﻿###  Allgemein
+﻿###  Beschreibung
+***
+Das Programm kann als Plugin aus dem AutoCAD aufgerufen werden. Um GCode zu generieren kann man den Befehl ***GCode*** tippen sobald das AutoCAD gestartet und bereit ist.
+
+
+###  Allgemein
 
 ***
 Ab jetzt besteht dieses Repository aus 2 Branches. 
 
-Das Branch **master** erhält einen funktionierenden getesteten Code.
+Das Branch **master** erhält einen funktionierenden getesteten Code.***Zur Bewertung***
 
  
 Das Branch **developer** erhält einen momentan  bearbeitenden Code.
 
-
-Pushen auf dieses Branch mit dem Befehl
-
-     git push  origin -u developer
- 
-
-Um das Branch zu wechseln, tipp den Befehl
-
-     git checkout <Name  des Branches>
-
-Um zu pushen, tipp den Befehl
-     
-     git push origin -u <Name des Branches>
 
 ### Werkzeuge
 
