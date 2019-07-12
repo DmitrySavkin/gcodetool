@@ -12,9 +12,26 @@ namespace GCodeTool
 
         protected StringBuilder GCodeText { get; }
 
+        private int speed = 2000;
+        public int Speed
+        {
+            get
+            {
+                return speed;
+            }
+            set
+            {
+                if (value >= 500 && value <= 2000)
+                {
+                    speed = value;
+                }
+            }
+        }
+
         public GCode()
         {
             GCodeText = new StringBuilder();
+           
         }
 
         public GCode(GCode gcode)
@@ -23,6 +40,14 @@ namespace GCodeTool
             GCodeText.AppendLine(gcode.GCodeText.ToString());
         }
 
+        public void SetMetricSystem()
+        {
+            GCodeText.AppendLine("G90 G21");
+        }
+        public void SetInchSystem()
+        {
+            GCodeText.AppendLine("G90 G20");
+        }
         public abstract void Up();
         public abstract void Down();
 
@@ -37,7 +62,7 @@ namespace GCodeTool
 
         public void RotationOn()
         {
-            RotationOn(2000);
+            RotationOn(speed);
         }
 
         public void CoolingOn()
@@ -50,23 +75,19 @@ namespace GCodeTool
             GCodeText.AppendLine("M9");
         }
 
-        public void RotationOn(int speed, CommandOption option = CommandOption.ClockWise)
+        public void RotationOn(int speed, CommandDirectionOption option = CommandDirectionOption.ClockWise)
         {
-            if (option == CommandOption.ClockWise)
+            switch (option)
             {
-                GCodeText.AppendLine("M3 S" + speed);
-            }
-            else
-            {
-                if (option == CommandOption.CounterClockWise)
-                {
+                case CommandDirectionOption.ClockWise:
+
+                    GCodeText.AppendLine("M3 S" + speed);
+                    break;
+                case CommandDirectionOption.CounterClockWise:
                     GCodeText.AppendLine("M4 S" + speed);
-                }
-                else
-                {
-                    throw new ArgumentException("Wrong option");
-                }
+                    break;
             }
+          
         }
 
         public void RotationOff()

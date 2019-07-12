@@ -50,10 +50,10 @@ namespace GCodeTool
             Move(p.X, p.Y);
         }
 
-        public void MoveArcTo(Point2d endPoint, double radius, CommandOption option = CommandOption.ClockWise)
+        public void MoveArcTo(Point2d endPoint, double radius, CommandDirectionOption option = CommandDirectionOption.ClockWise)
         {
             string s;
-            var b = option == CommandOption.ClockWise;
+            var b = option == CommandDirectionOption.ClockWise;
             s = String.Format("G0{0} X{1} Y{2} R{3} ", b ? 2 : 3, endPoint.X, endPoint.Y, radius);
             GCodeText.AppendLine(s);
         }
@@ -78,7 +78,7 @@ namespace GCodeTool
             RotationOff();
         }
 
-        public void MoveArc(Point2d startPoint, Point2d endPoint, double radius, CommandOption option = CommandOption.ClockWise)
+        public void MoveArc(Point2d startPoint, Point2d endPoint, double radius, CommandDirectionOption option = CommandDirectionOption.ClockWise)
         {
             Position(new Point2d(startPoint.X, startPoint.Y));
             RotationOn();

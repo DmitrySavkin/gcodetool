@@ -13,15 +13,16 @@ namespace GCodeTool
         private bool isOuter;
         internal Point2d basePoint;
         private double diamOffset;
+        private CommandMetricOption coordinate;
 
-
-        public Command(Point2d basePoint, CurveInfo e, double diamOffset)
+        public Command(Point2d basePoint, CurveInfo e, double diamOffset, CommandMetricOption coordinate = CommandMetricOption.MetricSystem)
         {
 
             this.isOuter = e.IsOuter;
             this.basePoint = basePoint;
             //this.Polyline = p;
             this.diamOffset = diamOffset;
+            this.coordinate = coordinate;
             //    this.Polyline = new Offset().getBias(p, EdgeTool.Edge.IsOuter(p));
         }
 
@@ -68,10 +69,17 @@ namespace GCodeTool
             }
         }
     }
-    public enum CommandOption
+    public enum CommandDirectionOption
     {
-         ClockWise = 0,
-         CounterClockWise = 1
+        ClockWise = 0,
+        CounterClockWise = 1
+
+    }
+
+    public enum CommandMetricOption
+    {
+        MetricSystem = 0,
+        IncSystem = 1,
     }
 
 }

@@ -14,7 +14,7 @@ namespace GCodeTool
         public Circle Circle { get; }
 
 
-        public CircleCommand(Point2d basePoint, CurveInfo e,double diam) : base(basePoint,e, diam ) 
+        public CircleCommand(Point2d basePoint, CurveInfo e,double diam, CommandMetricOption option = CommandMetricOption.IncSystem) : base(basePoint,e, diam ) 
         {
 
 

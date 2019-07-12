@@ -15,7 +15,7 @@ namespace GCodeTool
 
 
 
-        public PolylineCommand(Point2d basePoint, CurveInfo e, double diam) : base(basePoint, e, diam)
+        public PolylineCommand(Point2d basePoint, CurveInfo e, double diam, CommandMetricOption option = CommandMetricOption.MetricSystem) : base(basePoint, e, diam, option)
         {
             Polyline p = e.Entity as Polyline;
             if (p != null)
@@ -51,8 +51,8 @@ namespace GCodeTool
                     var seg = Polyline.GetArcSegment2dAt(i - 1);
                     var bulge = Polyline.GetBulgeAt(i - 1) > 0;
                     c.MoveArcTo(nextPoint, seg.Radius, bulge
-                        ? CommandOption.CounterClockWise
-                        : CommandOption.ClockWise);
+                        ? CommandDirectionOption.CounterClockWise
+                        : CommandDirectionOption.ClockWise);
                 }
                 else
                 {
