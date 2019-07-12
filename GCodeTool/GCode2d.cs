@@ -7,17 +7,12 @@ using System.Threading.Tasks;
 
 namespace GCodeTool
 {
-   public class GCode
+   public class GCode2d : GCode
     {
-        private bool up = true;
+     
 
-        private StringBuilder GCodeText { get; }
-
-        public GCode()
-        {
-            GCodeText = new StringBuilder();
-        }
-        public void Up()
+      
+        public override void Up()
         {
             //Problem
             if (!up)
@@ -27,7 +22,7 @@ namespace GCodeTool
             }
         }
 
-        public void Down()
+        public override void Down()
         {
             //Problem
             if (up)
@@ -38,10 +33,16 @@ namespace GCodeTool
         }
 
 
-        public void Move(double x, double y)
+        public override  void Move(double x, double y)
         {
             GCodeText.AppendLine("G1 X" + x + "Y" + y);
 
+        }
+
+        public override void Position(double x, double y)
+        {
+            Up();
+            Move(x, y);
         }
 
         public void Move(Point2d p)
@@ -57,16 +58,13 @@ namespace GCodeTool
             GCodeText.AppendLine(s);
         }
 
-        public void Position(double x, double y)
-        {
-            Up();
-            Move(x, y);
-        }
+    
 
         public void Position(Point2d p)
         {
             Position(p.X, p.Y);
         }
+
         public void MoveCircle(Point2d center, double radius)
         {//G02 X5. Y0. I-5. J0.
             Position(new Point2d(center.X + radius, center.Y));
@@ -92,49 +90,8 @@ namespace GCodeTool
             RotationOff();
         }
 
-
-        public void RotationOn()
-        {
-            RotationOn(2000);
-        }
-
-        public void RotationOn(int speed, CommandOption option = CommandOption.ClockWise)
-        {
-            if (option == CommandOption.ClockWise)
-            {
-                GCodeText.AppendLine("M3 S" + speed);
-            }
-            else
-            {
-                if (option == CommandOption.AntiClockWise)
-                {
-                    GCodeText.AppendLine("M4 S" + speed);
-                }
-                else
-                {
-                    throw new ArgumentException("Wrong option");
-                }
-            }
-        }
-
-        public void RotationOff()
-        {
-            GCodeText.AppendLine("M5");
-        }
-
-        public void CoolingOn()
-        {
-            GCodeText.AppendLine("M8");
-        }
-
-        public void CoolingOff()
-        {
-            GCodeText.AppendLine("M9");
-        }
-        public override string ToString()
-        {
-            return GCodeText.ToString();
-        }
-
+       
+       
+        
     }
 }

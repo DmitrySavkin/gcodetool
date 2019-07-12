@@ -43,7 +43,7 @@ namespace GCodeTool
             return radius + d;
         }
         
-        public override GCode2d Run()
+        public override GCode Run()
         {
             GCode2d c = new GCode2d();
             Point2d center = new Point2d(Circle.Center.X, Circle.Center.Y);

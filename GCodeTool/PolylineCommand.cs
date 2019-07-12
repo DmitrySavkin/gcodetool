@@ -34,7 +34,7 @@ namespace GCodeTool
         }
    
 
-        public override GCode2d Run()
+        public override GCode Run()
         {
             GCode2d c = new GCode2d();
             c.Position(GetRealPoint(Polyline.GetPoint2dAt(0)));
