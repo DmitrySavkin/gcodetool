@@ -32,7 +32,7 @@ namespace GCodeTool
             }
         }
 
-        public override GCodeBase Run()
+        public override GCode Run()
         {
             Polyline p1 = ConvertToPolyline();
             return new PolylineCommand(this.basePoint, p1, IsOuter, DiameterOffset).Run();

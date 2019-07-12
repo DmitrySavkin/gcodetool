@@ -57,7 +57,7 @@ namespace GCodeTool
                 return basePoint;
             }
         }
-        public abstract GCodeBase Run();
+        public abstract GCode Run();
 
 
         public double DiameterOffset

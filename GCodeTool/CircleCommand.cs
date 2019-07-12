@@ -43,9 +43,9 @@ namespace GCodeTool
             return radius + d;
         }
         
-        public override GCodeBase Run()
+        public override GCode Run()
         {
-            GCodeBase c = new GCodeBase();
+            GCode c = new GCode();
             Point2d center = new Point2d(Circle.Center.X, Circle.Center.Y);
             c.MoveCircle(GetRealPoint(center), ModifyRadius(Circle.Radius));
             return c;

@@ -11,18 +11,18 @@ namespace GCodeTool
     {
         private static bool up = true;
 
-        private StringBuilder GCode { get; }
+        private StringBuilder GCodeText { get; }
 
         public GCodeBase()
         {
-            GCode = new StringBuilder();
+            GCodeText = new StringBuilder();
         }
         public void Up()
         {
             //Problem
             if (!up)
             {
-                GCode.AppendLine("G1 Z10");
+                GCodeText.AppendLine("G1 Z10");
                 up = true;
             }
         }
@@ -32,7 +32,7 @@ namespace GCodeTool
             //Problem
             if (up)
             {
-                GCode.AppendLine("G1 Z-10");
+                GCodeText.AppendLine("G1 Z-10");
                 up = false;
             }
         }
@@ -40,7 +40,7 @@ namespace GCodeTool
 
         public void Move(double x, double y)
         {
-            GCode.AppendLine("G1 X" + x + "Y" + y);
+            GCodeText.AppendLine("G1 X" + x + "Y" + y);
 
         }
 
@@ -66,7 +66,7 @@ namespace GCodeTool
             Down();
             CoolingOn();
             string s = String.Format("G02 X{0} Y{1} I{2} J{3}", center.X + radius, center.Y, -radius, 0);
-            GCode.AppendLine(s);
+            GCodeText.AppendLine(s);
             CoolingOff();
             Up();
             RotationOff();
@@ -89,7 +89,7 @@ namespace GCodeTool
                s = String.Format("G03 X{0} Y{1} R{2}", endPoint.X, endPoint.Y, radius);
 
             }
-            GCode.AppendLine(s);
+            GCodeText.AppendLine(s);
             CoolingOff();
             Up();
             RotationOff();
@@ -105,13 +105,13 @@ namespace GCodeTool
         {
             if (option == CommandOption.ClockWise)
             {
-                GCode.AppendLine("M3 S" + speed);
+                GCodeText.AppendLine("M3 S" + speed);
             }
             else
             {
                 if (option == CommandOption.AntiClockWise)
                 {
-                    GCode.AppendLine("M4 S" + speed);
+                    GCodeText.AppendLine("M4 S" + speed);
                 }
                 else
                 {
@@ -124,22 +124,22 @@ namespace GCodeTool
         public void RotationOff()
         {
 
-            GCode.AppendLine("M5");
+            GCodeText.AppendLine("M5");
         }
 
         public void CoolingOn()
         {
-            GCode.AppendLine("M8");
+            GCodeText.AppendLine("M8");
 
         }
 
         public void CoolingOff()
         {
-            GCode.AppendLine("M9");
+            GCodeText.AppendLine("M9");
         }
         public override string ToString()
         {
-            return GCode.ToString();
+            return GCodeText.ToString();
         }
 
     }
