@@ -26,6 +26,7 @@ namespace AutoCADTool
             InitializeComponent();
             SetTextGCode();
             this.diameter.Value = Convert.ToDecimal(CommandManager.DefaultDiam);
+            this.speeValue.Value = Convert.ToDecimal(GCode.Speed);
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -82,11 +83,11 @@ namespace AutoCADTool
         }
         private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            decimal z = this.zCoordinate.Value;
+            decimal speedValue = this.speeValue.Value;
             string pattern = @"S[0-9]{3,4}";
             Regex r = new Regex(pattern);
             string cpy = GCodeFrame.Text;
-            string nd = r.Replace(cpy, "S" + z);
+            string nd = r.Replace(cpy, "S" + speedValue);
             GCodeFrame.Text = nd;
             //   MessageBox.Show(nd);
         }

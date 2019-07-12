@@ -38,7 +38,7 @@ namespace GCodeTool
 
         public override GCode Run()
         {
-            GCode2d c = new GCode2d();
+            GCode2d c = new GCode2(coordinateSystem);
             c.Position(GetRealPoint(Polyline.GetPoint2dAt(0)));
             c.RotationOn();
             c.Down();

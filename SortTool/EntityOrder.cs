@@ -69,6 +69,10 @@ namespace SortTool
                }*/
            // Dublicate.Filter(resEntities);
             //Dublicate.RemoveDublicateCircle(resEntities);
+            if (resEntities.Count == 0)
+            {
+               
+            }
             return resEntities;
         }
 

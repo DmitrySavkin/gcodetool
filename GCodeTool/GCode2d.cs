@@ -9,9 +9,14 @@ namespace GCodeTool
 {
    public class GCode2d : GCode
     {
-     
+        public GCode2d(CommandMetricOption option) : base(option)
+        {
+        }
 
-      
+        public GCode2d(GCode gcode) : base(gcode)
+        {
+        }
+
         public override void Up()
         {
             //Problem

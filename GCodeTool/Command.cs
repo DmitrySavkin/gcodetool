@@ -13,7 +13,7 @@ namespace GCodeTool
         private bool isOuter;
         internal Point2d basePoint;
         private double diamOffset;
-        private CommandMetricOption coordinate;
+        internal CommandMetricOption coordinateSystem;
 
         public Command(Point2d basePoint, CurveInfo e, double diamOffset, CommandMetricOption coordinate = CommandMetricOption.MetricSystem)
         {
@@ -22,7 +22,7 @@ namespace GCodeTool
             this.basePoint = basePoint;
             //this.Polyline = p;
             this.diamOffset = diamOffset;
-            this.coordinate = coordinate;
+            this.coordinateSystem = coordinate;
             //    this.Polyline = new Offset().getBias(p, EdgeTool.Edge.IsOuter(p));
         }
 
