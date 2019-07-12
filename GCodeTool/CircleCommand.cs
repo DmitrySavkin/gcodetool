@@ -9,11 +9,23 @@ using System.Threading.Tasks;
 
 namespace GCodeTool
 {
+    /// <summary>
+    /// Provides methods to generate gcode of circle
+    /// </summary>
     public class CircleCommand :  Command
     {
+        /// <summary>
+        /// Circle which in task now
+        /// </summary>
         public Circle Circle { get; }
 
-
+        /// <summary>
+        /// Creates new object to generate gcode of polkyline relative of base point of coordinates system
+        /// </summary>
+        /// <param name="basePoint">Base point of coordinates system</param>
+        /// <param name="e">Curve information </param>
+        /// <param name="diam">Diameter of wimble</param>
+        /// <param name="option">Metric or inch system</param>
         public CircleCommand(Point2d basePoint, CurveInfo e,double diam, CommandMetricOption option = CommandMetricOption.IncSystem) : base(basePoint,e, diam ) 
         {
 

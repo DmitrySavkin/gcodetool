@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace GCodeTool
 {
+    /// <summary>
+    /// Provides the metod to calculate offset a wimble
+    /// </summary>
     public class Offset
     {
         private Polyline polyline;
@@ -16,6 +19,13 @@ namespace GCodeTool
         private double diameter;
         private int count;
 
+        /// <summary>
+        /// Modifies the polyline. Calculates offset and modify polyline 
+        /// </summary>
+        /// <param name="polyline"></param>
+        /// <param name="isOuter"></param>
+        /// <param name="diameter"></param>
+        /// <returns></returns>
         public Polyline getBias(Polyline polyline, bool isOuter, double diameter)
         {
             this.diameter = diameter;

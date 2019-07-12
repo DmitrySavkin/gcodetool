@@ -43,7 +43,7 @@ namespace GCodeTool
         /// </summary>
         /// <param name="basePoint">base point of coordinates system</param>
         /// <param name="e">Curve  </param>
-        /// <param name="isOuther">true, if polyline must be outer. </param>
+        /// <param name="isOuther">True, if polyline must be outer. </param>
         /// <param name="diam">Diameter of wimble</param>
         public PolylineCommand(Point2d basePoint, Curve e, bool isOuther, double diam) : base(basePoint, isOuther, diam)
         {
