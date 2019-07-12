@@ -11,7 +11,7 @@ namespace GCodeTool
     {
         private static bool up = true;
 
-        private StringBuilder GCodeText;
+        private StringBuilder GCodeText { get; }
 
         public GCode()
         {
@@ -49,6 +49,14 @@ namespace GCodeTool
             Move(p.X, p.Y);
         }
 
+        public void MoveArcTo(Point2d endPoint, double radius, CommandOption option = CommandOption.ClockWise)
+        {
+            string s;
+            var b = option == CommandOption.ClockWise;
+            s = String.Format("G0{0} X{1} Y{2} R{3} ", b ? 2 : 3, endPoint.X, endPoint.Y, radius);
+            GCodeText.AppendLine(s);
+        }
+
         public void Position(double x, double y)
         {
             Up();
@@ -78,18 +86,7 @@ namespace GCodeTool
             RotationOn();
             Down();
             CoolingOn();
-            string s = "";
-            if ( option == CommandOption.ClockWise)
-            {
-                s = String.Format("G02 X{0} Y{1} R{2} ", endPoint.X, endPoint.Y, radius);
-
-            }
-            else
-            {
-               s = String.Format("G03 X{0} Y{1} R{2}", endPoint.X, endPoint.Y, radius);
-
-            }
-            GCodeText.AppendLine(s);
+            MoveArcTo(endPoint, radius, option);
             CoolingOff();
             Up();
             RotationOff();
@@ -118,19 +115,16 @@ namespace GCodeTool
                     throw new ArgumentException("Wrong option");
                 }
             }
-
         }
 
         public void RotationOff()
         {
-
             GCodeText.AppendLine("M5");
         }
 
         public void CoolingOn()
         {
             GCodeText.AppendLine("M8");
-
         }
 
         public void CoolingOff()
