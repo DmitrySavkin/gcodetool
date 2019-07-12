@@ -31,13 +31,13 @@ namespace GCodeTool
             }
             this.arc = a;
         }
-        public override GCode Run()
+        public override GCode2d Run()
         {
             /*  Polyline p1 = ConvertToPolyline();
               return new PolylineCommand(this.basePoint, p1, IsOuter).Run();
               */
             
-            GCode c = new GCode();
+            GCode2d c = new GCode2d();
             Point2d end = new Point2d(arc.EndPoint.X, arc.EndPoint.Y);
             Point2d start = new Point2d(arc.StartPoint.X, arc.StartPoint.Y);
             Point2d center = new Point2d(arc.EndPoint.X, arc.StartPoint.Y);
