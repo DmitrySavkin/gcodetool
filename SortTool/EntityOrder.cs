@@ -8,10 +8,19 @@ using GeometryTool;
 
 namespace SortTool
 {
+    /// <summary>
+    /// Provides the methods to order parts of sketch. 
+    /// </summary>
     public class EntityOrder
     {
 
 
+        /// <summary>
+        /// Checks is entity e2  in inner entity e1
+        /// </summary>
+        /// <param name="e1">Outher entity</param>
+        /// <param name="e2">Inner entity</param>
+        /// <returns>True, when e1 contains e2</returns>
         public static bool isInside(Entity e1, Entity e2)
         {
           EntityVerifier ef =  VerifierFabric.SortEntity(e1, e2);
@@ -20,7 +29,11 @@ namespace SortTool
           return false;
         }
 
-
+        /// <summary>
+        /// Returns sorted list of entities from center to outer bounder of  component
+        /// </summary>
+        /// <param name="allEntities">List of sketchs from autocad</param>
+        /// <returns>Sorted list of sketch</returns>
         public static List<CurveInfo> GetOrderedEntities(List<CurveInfo> allEntities)
         {
             if (allEntities == null)
