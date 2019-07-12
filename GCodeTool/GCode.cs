@@ -58,7 +58,7 @@ namespace GCodeTool
             }
             else
             {
-                if (option == CommandOption.AntiClockWise)
+                if (option == CommandOption.CounterClockWise)
                 {
                     GCodeText.AppendLine("M4 S" + speed);
                 }

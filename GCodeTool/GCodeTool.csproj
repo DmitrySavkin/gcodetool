@@ -53,13 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArcCommand.cs" />
     <Compile Include="CircleCommand.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandManager.cs" />
     <Compile Include="GCode.cs" />
     <Compile Include="GCode2d.cs" />
-    <Compile Include="LineCommand.cs" />
     <Compile Include="Offset.cs" />
     <Compile Include="PolylineCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

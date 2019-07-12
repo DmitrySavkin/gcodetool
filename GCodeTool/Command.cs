@@ -71,7 +71,7 @@ namespace GCodeTool
     public enum CommandOption
     {
          ClockWise = 0,
-         AntiClockWise = 1
+         CounterClockWise = 1
     }
 
 }
