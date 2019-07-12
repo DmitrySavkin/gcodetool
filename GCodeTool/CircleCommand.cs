@@ -45,12 +45,11 @@ namespace GCodeTool
         
         public override GCode Run()
         {
-            GCode2d c = new GCode2d();
+            GCode2d c = new GCode2d(coordinateSystem);
             Point2d center = new Point2d(Circle.Center.X, Circle.Center.Y);
             c.MoveCircle(GetRealPoint(center), ModifyRadius(Circle.Radius));
             return c;
         }
 
-   
     }
 }

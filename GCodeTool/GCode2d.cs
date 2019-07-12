@@ -7,12 +7,23 @@ using System.Threading.Tasks;
 
 namespace GCodeTool
 {
-   public class GCode2d : GCode
+    /// <summary>
+    /// Contains generating gcode methods in 2D-space
+    /// </summary>
+    public class GCode2d : GCode
     {
+        /// <summary>
+        /// Creates new object and set metric or inch system
+        /// </summary>
+        /// <param name="option">metric or inch system</param>
         public GCode2d(CommandMetricOption option) : base(option)
         {
         }
 
+        /// <summary>
+        /// Creates a new object and attaches external existing gcode.
+        /// </summary>
+        /// <param name="gcode">Existing gcode</param>
         public GCode2d(GCode gcode) : base(gcode)
         {
         }
@@ -50,11 +61,20 @@ namespace GCodeTool
             Move(x, y);
         }
 
+        /// <summary>
+        /// Confines the wimble on a particular place
+        /// </summary>
+        /// <param name="p">final point</param>
         public void Move(Point2d p)
         {
             Move(p.X, p.Y);
         }
-
+        /// <summary>
+        /// Moves the wimble in end final pooint
+        /// </summary>
+        /// <param name="endPoint">final end point</param>
+        /// <param name="radius">radius of arc</param>
+        /// <param name="option">Sets clockwise or counter-clockwise movement</param>
         public void MoveArcTo(Point2d endPoint, double radius, CommandDirectionOption option = CommandDirectionOption.ClockWise)
         {
             string s;
@@ -63,13 +83,21 @@ namespace GCodeTool
             GCodeText.AppendLine(s);
         }
 
-    
 
+        /// <summary>
+        /// Confines the wimble on a particular place
+        /// </summary>
+        /// <param name="p">final point</param>
         public void Position(Point2d p)
         {
             Position(p.X, p.Y);
         }
 
+        /// <summary>
+        /// Make circular movements
+        /// </summary>
+        /// <param name="center">center-point of circle</param>
+        /// <param name="radius">radius of circle</param>
         public void MoveCircle(Point2d center, double radius)
         {//G02 X5. Y0. I-5. J0.
             Position(new Point2d(center.X + radius, center.Y));
@@ -83,6 +111,14 @@ namespace GCodeTool
             RotationOff();
         }
 
+        /// <summary>
+        /// Rounds up  parts of component 
+        /// </summary>
+        /// <param name="startPoint">start point</param>
+        /// <param name="endPoint">end point</param>
+        /// <param name="radius">radius of arc</param>
+        /// <param name="option">sets clockwise or anticlockwise direction of the wimble</param>
+
         public void MoveArc(Point2d startPoint, Point2d endPoint, double radius, CommandDirectionOption option = CommandDirectionOption.ClockWise)
         {
             Position(new Point2d(startPoint.X, startPoint.Y));
@@ -94,9 +130,5 @@ namespace GCodeTool
             Up();
             RotationOff();
         }
-
-       
-       
-        
     }
 }

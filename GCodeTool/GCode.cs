@@ -79,6 +79,15 @@ namespace GCodeTool
         }
 
         /// <summary>
+        /// Attaches external existing gcode.
+        /// </summary>
+        /// <param name="gcode">Existing gcode</param>
+        public void AddCode(GCode gcode)
+        {
+            GCodeText.AppendLine(gcode.ToString());
+        
+        }
+        /// <summary>
         /// Sets XYcoordinate system
         /// </summary>
         public void SetXYCoordinates()
