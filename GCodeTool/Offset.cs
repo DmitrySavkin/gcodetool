@@ -25,7 +25,7 @@ namespace GCodeTool
         /// <param name="polyline">Current polyline without modiified</param>
         /// <param name="isOuter">True, when  polyline must be outer bound</param>
         /// <param name="diameter">Diameter of wimble</param>
-        /// <returns></returns>
+        /// <returns>Modieifed polyline</returns>
         public Polyline getBias(Polyline polyline, bool isOuter, double diameter)
         {
             this.diameter = diameter;
