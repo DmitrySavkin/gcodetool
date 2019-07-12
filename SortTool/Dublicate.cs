@@ -39,6 +39,45 @@ namespace SortTool
             }
         }
 
+        internal static void RemoveDublicatePolyline(List<CurveInfo> entities)
+        {
+           for (int i = 0; i < entities.Count; i++)
+            {
+                for (int j = 0; j < entities.Count; j++)
+                {
+                    if (i == j)
+                        continue;
+                    if (i >= entities.Count || j >= entities.Count)
+                        break;
+                    Polyline p1 = entities[i].Entity as Polyline;
+                    Polyline p2 = entities[j].Entity as Polyline;
+                    if (p1 != null && p2 != null)
+                    {
+
+
+                        if (p1.NumberOfVertices != p2.NumberOfVertices)
+                            continue;
+                        bool dublicate = false;
+                        for (int k = 0; k < p1.NumberOfVertices; k++)
+                        {
+                            if (p1.GetPoint2dAt(k).X == p2.GetPoint2dAt(k).X && p1.GetPoint2dAt(k).Y == p2.GetPoint2dAt(k).Y
+                                && p1.GetSegmentType(k).CompareTo(p2.GetSegmentType(k)) == 0)
+                            {
+                                dublicate = true;
+                                break;
+                            }
+                        }
+
+                        if (dublicate)
+                        {
+                            entities.RemoveAt(i);
+                            continue;
+                        }
+                    }
+                }
+            }
+        }
+
         internal static  void RemoveDublicateCircle(List<CurveInfo> entities)
         {
 
@@ -48,6 +87,8 @@ namespace SortTool
                 for (int j = 0; j < entities.Count; j++)
                 {
 
+                    if (i >= entities.Count || j >= entities.Count)
+                        break;
                     Circle c1 = entities[i].Entity as Circle;
                     Circle c2 = entities[j].Entity as Circle;
                     if (c1 != null && c2 != null)

@@ -27,6 +27,9 @@ namespace SortTool
                 throw new NullReferenceException("The list of entities  is null");
             if (allEntities.Count == 0)
                 return null;
+
+            Dublicate.RemoveDublicateCircle(allEntities);
+            Dublicate.RemoveDublicatePolyline(allEntities);
             List<CurveInfo> resEntities = new List<CurveInfo>();
             bool wasProcessed;
             do
@@ -68,7 +71,6 @@ namespace SortTool
 
                }*/
            // Dublicate.Filter(resEntities);
-            //Dublicate.RemoveDublicateCircle(resEntities);
             if (resEntities.Count == 0)
             {
                
