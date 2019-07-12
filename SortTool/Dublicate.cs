@@ -9,7 +9,7 @@ namespace SortTool
 {
     public class Dublicate
     {
-
+        /*
         internal static void Filter(List<CurveInfo> entities)
         {
             for (int i = 0; i < entities.Count; i++)
@@ -43,12 +43,9 @@ namespace SortTool
         {
            for (int i = 0; i < entities.Count; i++)
             {
-                for (int j = 0; j < entities.Count; j++)
+                for (int j = i + 1; j < entities.Count; j++)
                 {
-                    if (i == j)
-                        continue;
-                    if (i >= entities.Count || j >= entities.Count)
-                        break;
+                  
                     Polyline p1 = entities[i].Entity as Polyline;
                     Polyline p2 = entities[j].Entity as Polyline;
                     if (p1 != null && p2 != null)
@@ -84,11 +81,9 @@ namespace SortTool
 
             for (int i = 0; i < entities.Count; i++)
             {
-                for (int j = 0; j < entities.Count; j++)
+                for (int j = i + 1; j < entities.Count; j++)
                 {
 
-                    if (i >= entities.Count || j >= entities.Count)
-                        break;
                     Circle c1 = entities[i].Entity as Circle;
                     Circle c2 = entities[j].Entity as Circle;
                     if (c1 != null && c2 != null)
@@ -104,6 +99,6 @@ namespace SortTool
 
             }
         }
-
+        */
     }
 }

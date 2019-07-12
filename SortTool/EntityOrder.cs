@@ -41,8 +41,8 @@ namespace SortTool
             if (allEntities.Count == 0)
                 return null;
 
-            Dublicate.RemoveDublicateCircle(allEntities);
-            Dublicate.RemoveDublicatePolyline(allEntities);
+           // Dublicate.RemoveDublicateCircle(allEntities);
+         //   Dublicate.RemoveDublicatePolyline(allEntities);
             List<CurveInfo> resEntities = new List<CurveInfo>();
             bool wasProcessed;
             do

@@ -26,7 +26,7 @@ namespace AutoCADTool
             InitializeComponent();
             SetTextGCode();
             this.diameter.Value = Convert.ToDecimal(CommandManager.DefaultDiam);
-            this.speeValue.Value = Convert.ToDecimal(GCode.Speed);
+          //  this.speeValue.Value = (decimal)GCode.Speed / 100;
         }
 
         private void Button1_Click(object sender, EventArgs e)
