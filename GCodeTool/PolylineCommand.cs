@@ -9,12 +9,25 @@ using System.Threading.Tasks;
 
 namespace GCodeTool
 {
+    /// <summary>
+    /// Provides methods to generate gcode of polyline
+    /// </summary>
     public class PolylineCommand : Command
     {
+        /// <summary>
+        /// Polyline which in task now
+        /// </summary>
         public Polyline Polyline { get; }
 
 
 
+        /// <summary>
+        /// Creates new object to generate gcode of polkyline relative of base point of coordinates system
+        /// </summary>
+        /// <param name="basePoint">base point of coordinates system</param>
+        /// <param name="e">Curve information </param>
+        /// <param name="diam">Diameter of wimble</param>
+        /// <param name="option">Metric or inch system</param>
         public PolylineCommand(Point2d basePoint, CurveInfo e, double diam, CommandMetricOption option = CommandMetricOption.MetricSystem) : base(basePoint, e, diam, option)
         {
             Polyline p = e.Entity as Polyline;
@@ -25,7 +38,14 @@ namespace GCodeTool
             }
         }
 
-        public PolylineCommand(Point2d basePoint, Entity e, bool isOuther, double diam) : base(basePoint, isOuther, diam)
+        /// <summary>
+        /// Creates new object to generate gcode of polkyline relative of base point of coordinates system
+        /// </summary>
+        /// <param name="basePoint">base point of coordinates system</param>
+        /// <param name="e">Curve  </param>
+        /// <param name="isOuther">true, if polyline must be outer. </param>
+        /// <param name="diam">Diameter of wimble</param>
+        public PolylineCommand(Point2d basePoint, Curve e, bool isOuther, double diam) : base(basePoint, isOuther, diam)
         {
             Polyline p = e as Polyline;
             if (p != null)
