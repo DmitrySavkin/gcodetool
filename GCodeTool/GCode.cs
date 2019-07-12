@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace GCodeTool
 {
-   public class GCodeBase
+   public class GCode
     {
         private static bool up = true;
 
-        private StringBuilder GCodeText { get; }
+        private StringBuilder GCodeText;
 
-        public GCodeBase()
+        public GCode()
         {
             GCodeText = new StringBuilder();
         }
