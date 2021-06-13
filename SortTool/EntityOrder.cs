@@ -71,23 +71,7 @@ namespace SortTool
                     }
                 }
             } while (wasProcessed);
-            /*   for (int i = 0; i < resEntities.Count; i++)
-               {
-                   Entity curEntity = resEntities[i].Entity;
-                   Polyline p = curEntity as Polyline;
-                   if (p == null) continue;
-                   if (p.StartPoint != p.EndPoint)
-                   {
-                       Console.WriteLine("Bad figure here");
-
-                   }
-
-               }*/
-           // Dublicate.Filter(resEntities);
-            if (resEntities.Count == 0)
-            {
-               
-            }
+          
             return resEntities;
         }
 
